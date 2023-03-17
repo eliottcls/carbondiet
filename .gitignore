@@ -50,4 +50,5 @@ coverage.xml
 docs/_build/
 
 # Data files -> get them from the drive
-data
+data/images
+data/other
