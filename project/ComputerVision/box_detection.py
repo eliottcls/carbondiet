@@ -20,10 +20,10 @@ class BoundingBoxDetection:
             self.results = self.model(source=image)
 
         #extract infos
-        list_classes = [results[0].names[int(x.item())] for x in results[0].boxes.cls]
-        list_boxes = results[0].boxes.xywh.tolist()
+        list_classes = [self.results[0].names[int(x.item())] for x in self.results[0].boxes.cls]
+        list_boxes = self.results[0].boxes.xywh.tolist()
         
-        dict_results = {x:[] for x in results[0].names.values()}
+        dict_results = {x:[] for x in self.results[0].names.values()}
 
         for i in range(len(list_classes)):
             dict_results[list_classes[i]].append(self.normalize_coordinates(list_boxes[i]))
