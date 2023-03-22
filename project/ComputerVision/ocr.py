@@ -11,6 +11,7 @@ class OCR:
         x, y, w, h = box
         result = self.paddleocr.ocr(image[y:y+h,x:x+w], cls=True)
         list_formated_result = [x[1][0] for x in result[0]]
+        print(list_formated_result)
         return (' '.join(list_formated_result))
 
     def extract_text_from_dict_of_box(self, image, box_dict):

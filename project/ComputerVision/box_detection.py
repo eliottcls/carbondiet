@@ -31,6 +31,7 @@ class BoundingBoxDetection:
         return dict_results
 
     def normalize_coordinates(self, coord):
+        # Function to pass from yolov8 coordinate format to opencv format
         x1, y1, w, h = coord
         x = x1 - (w / 2)
         y = y1 - (h / 2)
