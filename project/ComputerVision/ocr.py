@@ -4,6 +4,8 @@ from ultralytics import YOLO
 import os
 from dotenv import load_dotenv
 import cv2
+import math
+
 
 load_dotenv()
 
@@ -32,13 +34,32 @@ class OCR:
         
         return dict_results
     
+    def extract_text_from_list_of_box(self, image, box_list):
+        list_result = []
+        for box in box_list:
+            list_result.append(self.extract_text_from_one_box(image, box))
+        
+        return list_result
+    
     def extract_text_from_menu(self, image):
 
         boxes = self.return_cleaned_boxes(image)
+        list_section_title = boxes["Section title"]
 
-        result = self.extract_text_from_dict_of_box(image, boxes)
+        attributed_boxes = self.attribute_boxes(boxes)
 
-        return result
+        dict_text = self.extract_text_from_dict_of_box(image, attributed_boxes)
+        section_title_text = self.extract_text_from_list_of_box(image, list_section_title)
+
+        dict_result = {}
+
+        for k in dict_text.keys():
+            if k!="unassigned":
+                dict_result[section_title_text[int(k)]] = dict_text[k]
+            else:
+                pass
+
+        return dict_result
     
     def detect_boxes(self, image, prob=False):
 
@@ -137,5 +158,57 @@ class OCR:
             cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
         
         return image
+    
+    def attribute_boxes(self, dict_boxes, recipe_name = "Recipe", section_title_name = "Section title"):
+        # Function that takes a dict of boxes with recipes and section itles. And then assigns each recipe to the closest section title box located above.
+
+        recipe = dict_boxes[recipe_name]
+        section = dict_boxes[section_title_name]
+        
+        # Initialize dictionary to hold assigned boxes
+        assigned_boxes = {}
+
+        # Initialize list to hold unassigned recipe boxes
+        unassigned_boxes = []
+
+        # Sort recipe boxes by y-coordinate
+        recipe = sorted(recipe, key=lambda box: box[1])
+
+        # Loop over recipe boxes
+        for recipe_box in recipe:
+            # Initialize variables to keep track of closest section box and distance
+            closest_section_box = None
+            closest_distance = float('inf')
+
+            # Loop over section boxes
+            for section_box in section:
+                # Check if section box is above recipe box
+                if section_box[1] > recipe_box[1]:
+                    continue
+                
+                # Compute distance between centers of recipe box and section box
+                recipe_center = (recipe_box[0] + recipe_box[2]/2, recipe_box[1] + recipe_box[3]/2)
+                section_center = (section_box[0] + section_box[2]/2, section_box[1] + section_box[3]/2)
+                distance = math.sqrt((recipe_center[0] - section_center[0])**2 + (recipe_center[1] - section_center[1])**2)
+                # Check if distance is smaller than current closest distance
+                if distance < closest_distance:
+                    closest_section_box = section_box
+                    closest_distance = distance
+
+            # Check if a section box was found for the recipe box
+            if closest_section_box is not None:
+                # Add recipe box to dictionary of assigned boxes
+                if section.index(closest_section_box) in assigned_boxes:
+                    assigned_boxes[section.index(closest_section_box)].append(recipe_box)
+                else:
+                    assigned_boxes[section.index(closest_section_box)] = [recipe_box]
+            else:
+                # Add recipe box to list of unassigned boxes
+                unassigned_boxes.append(recipe_box)
+
+        # Add unassigned boxes to dictionary of assigned boxes
+        assigned_boxes['unassigned'] = unassigned_boxes
+
+        return assigned_boxes
     
     #TODO create function to locate recipe regarding section title
