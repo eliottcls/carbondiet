@@ -57,7 +57,7 @@ class OCR:
             if k!="unassigned":
                 dict_result[section_title_text[int(k)]] = dict_text[k]
             else:
-                pass
+                dict_result["Unassigned Recipe"] = dict_text[k]
 
         return dict_result
     
