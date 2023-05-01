@@ -36,19 +36,22 @@ class Jow:
                                            '1 càs', '1/2 càc', 'Papier cuisson', 'Pics à brochette']
             
             ingredients = []
+            quantities = []
             for x in row:
                 if len(x)>1:         
                     ingredient = x[-1]    # the ingredient is the last element of the list 'row'  
+                    quantity = x[-2]      # x[0] might be "Faculatif" and not the quantity
                     if ingredient not in meaningless_jow_ingredients:   # keep only meaningfull ingredients
                         ingredient = remove_ligatures(ingredient)
                         ingredients.append(ingredient) 
+                        quantities.append(quantity) 
 
             #remove informations in parenthesis
             ingredients = [re.sub("[\(\[].*?[\)\]]", "", ingredient) for ingredient in ingredients]  
             # remove blank at the end of the string that remained when parenthesis have been removed
             ingredients = [ing[:-1] if ing[-1]==" " else ing for ing in ingredients]   
 
-            return ingredients
+            return [ingredients, quantities]
 
         try:
             # Try to load the dataframe
@@ -61,8 +64,10 @@ class Jow:
             self.df['recipe_name'] = self.df.index
             # Rename the column 'ingredients'
             self.df = self.df.rename({'ingredients': 'ingredients_with_quantity'}, axis = 1)
+            # Add a new column for ingredients without informations in parenthesis and irrelevant ingredients
+            self.df['simple_ingredients_with_quantity'] = self.df['ingredients_with_quantity'].apply(extract_ingredients)
             # Add a new column 'ingredients' for ingredients only (no quantity, informations in parenthesis are removed)
-            self.df['ingredients'] = self.df['ingredients_with_quantity'].apply(extract_ingredients)
+            self.df['ingredients'] = self.df['ingredients_with_quantity'].apply(lambda x: extract_ingredients(x)[0])
             # Add the column 'name_with_ingredients' by concatenating recipe names and ingredients
             self.df['name_with_ingredients'] = self.df.apply(lambda row: row['recipe_name'] \
                                                             + ", " + ', '.join(row['ingredients']), axis = 1)
@@ -70,11 +75,20 @@ class Jow:
             self.save(filename)
         
         return self.df
+    
+    '''
+    def extract_recipe(self, recipe_title: str):
+        # To be (probably) replaced to extract only relevant ingredients with no infos in parenthesis
+        # I should first update preprocessing()
+        self.raw_df.loc[recipe_title]['ingredients']
+    '''
+
         
 
 ###################################################################################
 
 class Ingredient:
+    # To be completed
     def __init__(self, name: str):
         # Ingredient name 
         self.name = name
