@@ -74,9 +74,9 @@ class Jow:
 ###################################################################################
 
 class Ingredient:
-    def __init__(self):
+    def __init__(self, name):
         # Ingredient name 
-        self.name = None
+        self.name = name
         # List of corresponding Agribalyse ingredients
         self.agribalyse_ingredients = None
         # Mean PEF score (unit = mPt/kg)
