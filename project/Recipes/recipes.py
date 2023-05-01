@@ -118,6 +118,16 @@ class Recipe:
 
 
     def average_from_recipes(self, recipe_list: list, weight_list = None):
+        """
+        Build a new recipe by averaging the recipes in recipe_list
+
+        Parameters
+        ----------
+        recipe_list : list
+            A list of recipes from the class Recipe
+        weight_list : list
+            A list giving the weight (between 0 and 1) of each recipe in the new recipe
+        """
         self.ingredients = []
         self.quantities = []
 
@@ -130,7 +140,7 @@ class Recipe:
             # Check there is no doublons in the recipe
             ing_names = [ing.name for ing in recipe.ingredients]
             assert len(ing_names)==len(set(ing_names))
-            
+
             # Loop on the ingredients in each recipe
             for ingredient, quantity in zip(recipe.ingredients, recipe.quantities):
                 # Normalize the quantity with the recipe weight
