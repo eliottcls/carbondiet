@@ -215,8 +215,32 @@ class Recipe:
                     # update the quantity of the ingredient
                     self.quantities[idx]['quantity'] += weighted_quantity['quantity']
 
-    #
-    #def average_from_nlp_predictions(self, nlp_results: list):
+    
+    def average_from_nlp_predictions(self, nlp_results: list, db_name = 'jow'):
+        # WARNING : NOT YET TESTED
+        """
+        Build a new recipe by averaging the recipes in nlp_results
+
+        Parameters
+        ----------
+        nlp_results : list
+            A list giving recipes predicted by NLP (with RecipeTransformer.predict())
+        db_name : str
+            -> TO BE MODIFIED, SHOULD BE INCLUDED IN NLP_RESULTS
+            The name of recipe database used for NLP predictions
+        """
+
+        assert db_name in ['jow']      #add more recipe databases
+
+        # Not optimized here (no need to reload the recipes_db for each recipe)
+        recipes_db = Jow()
+
+        recipe_list = [recipes_db.extract_recipe(title) for title in nlp_results['titles']]
+        recipe_scores = nlp_results['similarity_scores']
+        recipe_weigths = recipe_scores / max(recipe_scores)
+
+        self.average_from_recipes(recipe_list, weight_list = recipe_weigths)
+
 
 
 
