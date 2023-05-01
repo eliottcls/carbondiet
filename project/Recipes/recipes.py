@@ -88,15 +88,16 @@ class Recipe:
         # Recipe name 
         self.name = None
         # List of ingredients
+        # An ingredient is an instance of the class Ingredient
         self.ingredients = []
-        # List of quantities (including units)
+        # List of quantities (a quantity is a dict with 'quantity and 'unit')
         self.quantities = []
         # Score
         self.score_from_pefs = None
 
     def add_one_ingredient(self, ingredient_name: str, quantity_dict: dict):
         """
-        Add one ingredient to the list of ingredients
+        Add one ingredient to the list of ingredients with its quantity
 
         Parameters
         ----------
@@ -104,6 +105,8 @@ class Recipe:
         quantity_dict : dict
             Dictionnary with the 'quantity' and 'unit'
         """
+        # here we should check that ingredient_name is e.g. in a fixed list of ingredients
+        # to avoid problems with 'Boeuf' and 'boeuf' for instance
         # if the recipe has no ingredient with the name ingredient_name
         if ingredient_name not in [ing.name for ing in self.ingredients]:
             ingredient = Ingredient(ingredient_name)
@@ -112,5 +115,43 @@ class Recipe:
         # else nothing is done
         else:
             warnings.warn("This ingredient is already in the recipe. Nothing has been changed.")
+
+
+    def average_from_recipes(self, recipe_list: list, weight_list = None):
+        self.ingredients = []
+        self.quantities = []
+
+        if weight_list == None: 
+            # Recipe weights are all set equal to 1
+            weight_list = [1] * len(recipe_list)
+
+        # Loop on the recipes
+        for recipe, weight in zip(recipe_list, weight_list):
+            # Check there is no doublons in the recipe
+            ing_names = [ing.name for ing in recipe.ingredients]
+            assert len(ing_names)==len(set(ing_names))
+            
+            # Loop on the ingredients in each recipe
+            for ingredient, quantity in zip(recipe.ingredients, recipe.quantities):
+                # Normalize the quantity with the recipe weight
+                weighted_quantity = quantity.copy()
+                weighted_quantity['quantity'] = quantity['quantity'] * weight / len(recipe_list)
+
+                # if the ingredient is not yet in the new recipe, add it
+                if ingredient.name not in [ing.name for ing in self.ingredients]:
+                    self.ingredients.append(ingredient)
+                    self.quantities.append(weighted_quantity)
+                # else 
+                else:
+                    # find the index of the ingredient in the ingredient list
+                    idx = [ing.name for ing in self.ingredients].index(ingredient.name)
+                    # check units are the same
+                    assert self.quantities[idx]['unit']==weighted_quantity['unit']
+                    # update the quantity of the ingredient
+                    self.quantities[idx]['quantity'] += weighted_quantity['quantity']
+
+    #
+    #def average_from_nlp_predictions(self, nlp_results: list):
+
 
 
