@@ -71,4 +71,38 @@ class Jow:
         return self.df
         
 
-    
+###################################################################################
+
+class Ingredient:
+    def __init__(self):
+        # Ingredient name 
+        self.name = None
+        # List of corresponding Agribalyse ingredients
+        self.agribalyse_ingredients = None
+        # Mean PEF score (unit = mPt/kg)
+        self.pef_score = None
+
+class Recipe:
+    def __init__(self):
+        # Recipe name 
+        self.name = None
+        # List of ingredients
+        self.ingredients = None
+        # List of quantities (including units)
+        self.quantities = None
+        # Score
+        self.score_from_pefs = None
+
+    def add_one_ingredient(ingredient, quantity):
+        """
+        Add one ingredient to the list of ingredients
+
+        Parameter
+        ---------
+        ingredient : instance of the class Ingredient
+        """
+        if ingredient not in self.ingredients:
+            self.ingredients.append(ingredient)
+            self.quantities.append(quantity)
+        else:
+            pass
