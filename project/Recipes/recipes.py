@@ -76,12 +76,53 @@ class Jow:
         
         return self.df
     
-    '''
+    
     def extract_recipe(self, recipe_title: str):
-        # To be (probably) replaced to extract only relevant ingredients with no infos in parenthesis
-        # I should first update preprocessing()
-        self.raw_df.loc[recipe_title]['ingredients']
-    '''
+        """ 
+        Extract the recipe from the Jow database with the title 'recipe_title'
+
+        Parameters
+        ----------
+        recipe_title : str
+            Title of the Jow recipe to be extracted
+        Returns
+        -------
+        recipe : instance of the class Recipe
+            The extracted recipe
+        """
+
+        # Utility function to convert a string n representing a number into a float
+        def floatenize(n):  
+            try:
+                n = float(n)
+            except ValueError:
+                num, denom = n.split('/')
+                n = float(num) / float(denom)
+            return n
+
+        # Instantiate an empty recipe
+        recipe = Recipe()
+        # Get the ingredients + quantities of the Jow recipe with title 'recipe_title'
+        ingredients_quantities = self.df.loc[recipe_title]['simple_ingredients_with_quantity']
+        # Add them to the recipe
+        for ingredient_name, quantity in zip(*ingredients_quantities):
+            # Build the quantity dict of each ingredient
+            if len(quantity.split(" "))==1:
+                nb = floatenize(quantity.split(" ")[0])
+                unit = "no units"
+            else:
+                nb, unit = quantity.split(" ")
+                nb = floatenize(nb)
+
+            quantity_dict = dict(quantity = nb, unit = unit)
+
+            # Add the ingredient with the correct quantity
+            recipe.add_one_ingredient(ingredient_name, quantity_dict)
+
+        return recipe
+
+       
+    
 
         
 
