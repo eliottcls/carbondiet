@@ -1,6 +1,7 @@
 import pandas as pd 
 import os
 import re
+import warnings
 
 class Jow:
     def __init__(self):
@@ -74,7 +75,7 @@ class Jow:
 ###################################################################################
 
 class Ingredient:
-    def __init__(self, name):
+    def __init__(self, name: str):
         # Ingredient name 
         self.name = name
         # List of corresponding Agribalyse ingredients
@@ -87,22 +88,29 @@ class Recipe:
         # Recipe name 
         self.name = None
         # List of ingredients
-        self.ingredients = None
+        self.ingredients = []
         # List of quantities (including units)
-        self.quantities = None
+        self.quantities = []
         # Score
         self.score_from_pefs = None
 
-    def add_one_ingredient(ingredient, quantity):
+    def add_one_ingredient(self, ingredient_name: str, quantity_dict: dict):
         """
         Add one ingredient to the list of ingredients
 
-        Parameter
-        ---------
-        ingredient : instance of the class Ingredient
+        Parameters
+        ----------
+        ingredient_name : str
+        quantity_dict : dict
+            Dictionnary with the 'quantity' and 'unit'
         """
-        if ingredient not in self.ingredients:
+        # if the recipe has no ingredient with the name ingredient_name
+        if ingredient_name not in [ing.name for ing in self.ingredients]:
+            ingredient = Ingredient(ingredient_name)
             self.ingredients.append(ingredient)
-            self.quantities.append(quantity)
+            self.quantities.append(quantity_dict)
+        # else nothing is done
         else:
-            pass
+            warnings.warn("This ingredient is already in the recipe. Nothing has been changed.")
+
+
