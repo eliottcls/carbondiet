@@ -139,6 +139,25 @@ class Ingredient:
         # Mean PEF score (unit = mPt/kg)
         self.pef_score = None
 
+    def add_agribalyse_infos(self):
+        filename = "data/recipes/Jow_Agribalyse_ingredients_scores.json" 
+        # Not well written because we have to read the file for each ingredient -> to be corrected
+        df = pd.read_json(filename)
+        # Keep only the relevant line
+        df = df[df['JOW ingredients (simple, fr)']==self.name]
+        agribalyse_ingredients = list(df['AGB ingredients (simple, fr)'].values)
+
+        if len(agribalyse_ingredients)==0 or agribalyse_ingredients[0]=='no match': 
+            self.agribalyse_ingredients = 'no match'
+            self.pef_score = np.nan
+        else:
+            self.agribalyse_ingredients = agribalyse_ingredients[0]
+            self.pef_score = df['Mean PEF'].values
+
+
+
+###################################################################################
+
 class Recipe:
     def __init__(self):
         # Recipe name 
