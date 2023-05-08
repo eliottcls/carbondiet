@@ -52,3 +52,6 @@ docs/_build/
 # Data files -> get them from the drive
 data/images
 data/other
+
+# Keep only [Official] notebooks
+!notebooks/[Official]*
