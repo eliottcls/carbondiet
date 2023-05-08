@@ -131,6 +131,8 @@ class Jow:
 
 class Ingredient:
     # To be completed
+    # Not sure it is good to keep agribalyse_ingredients and pef_score as attributes
+    # They could be calculated with methods.
     def __init__(self, name: str):
         # Ingredient name 
         self.name = name
@@ -140,19 +142,27 @@ class Ingredient:
         self.pef_score = None
 
     def add_agribalyse_infos(self):
+        """
+        Update self.agribalyse_ingredients and self.pef_score
+        using the table matching JOW and Agribalyse ingredients.
+        To be generalized outside JOW.
+        """
         filename = "data/recipes/Jow_Agribalyse_ingredients_scores.json" 
         # Not well written because we have to read the file for each ingredient -> to be corrected
         df = pd.read_json(filename)
         # Keep only the relevant line
         df = df[df['JOW ingredients (simple, fr)']==self.name]
+        # Get agribalyse ingredients
         agribalyse_ingredients = list(df['AGB ingredients (simple, fr)'].values)
 
+        # If there is no matching agribalyse ingredients
         if len(agribalyse_ingredients)==0 or agribalyse_ingredients[0]=='no match': 
             self.agribalyse_ingredients = 'no match'
             self.pef_score = np.nan
+        # else update the attributes
         else:
             self.agribalyse_ingredients = agribalyse_ingredients[0]
-            self.pef_score = df['Mean PEF'].values
+            self.pef_score = df['Mean PEF'].values[0]
 
 
 
@@ -167,6 +177,8 @@ class Recipe:
         self.ingredients = []
         # List of quantities (a quantity is a dict with 'quantity and 'unit')
         self.quantities = []
+        # List of contributions of each ingredient to the score
+        self.score_contributions = []
         # Score
         self.score_from_pefs = None
 
@@ -227,9 +239,37 @@ class Recipe:
                               + "' has no matching entry in the quantity conversion table.")
 
 
+    def compute_score(self):
+        """
+        Update self.score_from_pefs and self.score_contributions
+        """
+        self.convert_quantities_in_kg()
+        # Could use try / except here but for now, better to keep the code running even if one quantity is not in kg
+        # If one quantity is not expressed in kg, the score cannot be calculated
+        if not all([quantity['unit']=='kg' for quantity in self.quantities]):
+            warnings.warn("All quantities must be expressed in kg. The recipe score cannot be calculated")
+            self.score_from_pefs = np.nan
+        # else 
+        else:
+            score_ingredient_contributions = []
+            for ingredient, quantity in zip(self.ingredients, self.quantities):
+                ingredient.add_agribalyse_infos()
+                score_ingredient_contributions.append(ingredient.pef_score * quantity['quantity'])
+
+            self.score_from_pefs = sum(score_ingredient_contributions)
+            self.score_contributions = score_ingredient_contributions / self.score_from_pefs
+
+
+
+
+
+
     def average_from_recipes(self, recipe_list: list, weight_list = None):
         """
         Build a new recipe by averaging the recipes in recipe_list
+
+        To be modified so as to remove ingredients with very low scores
+        (to avoid very long list of ingredients)
 
         Parameters
         ----------
@@ -269,6 +309,8 @@ class Recipe:
                     assert self.quantities[idx]['unit']==weighted_quantity['unit']
                     # update the quantity of the ingredient
                     self.quantities[idx]['quantity'] += weighted_quantity['quantity']
+
+        
 
     
     def average_from_nlp_predictions(self, nlp_results: list, db_name = 'jow'):
