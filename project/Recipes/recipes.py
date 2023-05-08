@@ -1,4 +1,5 @@
 import pandas as pd 
+import numpy as np
 import os
 import re
 import warnings
@@ -109,7 +110,7 @@ class Jow:
             # Build the quantity dict of each ingredient
             if len(quantity.split(" "))==1:
                 nb = floatenize(quantity.split(" ")[0])
-                unit = "no units"
+                unit = "unitaire"
             else:
                 nb, unit = quantity.split(" ")
                 nb = floatenize(nb)
@@ -150,6 +151,9 @@ class Recipe:
         # Score
         self.score_from_pefs = None
 
+        # Check there is one and only one quantity for each ingredient
+        assert(len(self.ingredients)==len(self.quantities))
+
     def add_one_ingredient(self, ingredient_name: str, quantity_dict: dict):
         """
         Add one ingredient to the list of ingredients with its quantity
@@ -170,6 +174,38 @@ class Recipe:
         # else nothing is done
         else:
             warnings.warn("This ingredient is already in the recipe. Nothing has been changed.")
+
+    def convert_quantities_in_kg(self):
+        """
+        Update self.quantities by expressing all quantities in kg
+        (except for couples (self.ingredients[i], self.quantities[i]['unit'])
+        that cannot be found in the conversion table)
+        """
+        # Be careful that this file gives the conversion table for JOW ingredients only
+        filename = "data/recipes/95_perc_kg_unit_ingredients_v2.csv" 
+        qty_df = pd.read_csv(filename)
+
+        for idx, ingredient in enumerate(self.ingredients):
+            # Do nothing if the quantity is already expressed in kg
+            if self.quantities[idx]['unit']=='kg': 
+                continue
+
+            # Find matching entries in the quantity conversion table qty_df
+            select_condition = ((qty_df['simple_ingredient']==ingredient.name.lower()) 
+                                & (qty_df['name_unit']==self.quantities[idx]['unit']))
+            unit_in_kg = qty_df[select_condition]['unit_kg'].values.tolist()
+
+            # if there is at least one matching entry in qty_df for (ingredient, quantity['unit])
+            if len(unit_in_kg)!=0:
+                # compute the mean value of unit_in_kg if there are several matching entries
+                unit_in_kg = np.array(unit_in_kg).mean()
+                quantity = unit_in_kg * self.quantities[idx]['quantity']
+                # update the quantity dictionnary
+                self.quantities[idx] = dict(quantity = quantity, unit = 'kg')
+            # if not, raise a warning and keep unchanged the quantity dictionnary
+            else:
+                warnings.warn("The ingredient '" + ingredient.name + "' with unit '" + self.quantities[idx]['unit'] 
+                              + "' has no matching entry in the quantity conversion table.")
 
 
     def average_from_recipes(self, recipe_list: list, weight_list = None):
