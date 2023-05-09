@@ -145,7 +145,7 @@ class Ingredient:
         """
         Update self.agribalyse_ingredients and self.pef_score
         using the table matching JOW and Agribalyse ingredients.
-        To be generalized outside JOW.
+        !! To be generalized outside JOW !!
         """
         filename = "data/recipes/Jow_Agribalyse_ingredients_scores.json" 
         # Not well written because we have to read the file for each ingredient -> to be corrected
@@ -243,6 +243,7 @@ class Recipe:
         """
         Update self.score_from_pefs and self.score_contributions
         """
+        # Convert quantities in kg
         self.convert_quantities_in_kg()
         # Could use try / except here but for now, better to keep the code running even if one quantity is not in kg
         # If one quantity is not expressed in kg, the score cannot be calculated
@@ -264,12 +265,9 @@ class Recipe:
 
 
 
-    def average_from_recipes(self, recipe_list: list, weight_list = None):
+    def average_from_recipes(self, recipe_list: list, weight_list = None, threshold = 0):
         """
         Build a new recipe by averaging the recipes in recipe_list
-
-        To be modified so as to remove ingredients with very low scores
-        (to avoid very long list of ingredients)
 
         Parameters
         ----------
@@ -277,6 +275,10 @@ class Recipe:
             A list of recipes from the class Recipe
         weight_list : list
             A list giving the weight (between 0 and 1) of each recipe in the new recipe
+        threshold : float 
+            A float between 0 and 1. 
+            Only ingredients whose contribution to the PEF score is larger than threshold are kept.
+            If threshold = 0 (default), all ingredients are kept.
         """
         self.ingredients = []
         self.quantities = []
@@ -309,6 +311,12 @@ class Recipe:
                     assert self.quantities[idx]['unit']==weighted_quantity['unit']
                     # update the quantity of the ingredient
                     self.quantities[idx]['quantity'] += weighted_quantity['quantity']
+
+        # Remove ingredients whose contributions to the score is lower than threshold
+        assert 0<=threshold<=1
+        self.compute_score()
+        self.ingredients = list(np.array(self.ingredients)[np.array(self.score_contributions) > threshold])
+        self.quantities = list(np.array(self.quantities)[np.array(self.score_contributions) > threshold])
 
         
 
