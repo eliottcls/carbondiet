@@ -1,5 +1,6 @@
 import pandas as pd
 import re
+import project.Recipes.recipes as recipes
 
 
 class Menu:
@@ -64,20 +65,66 @@ class Menu:
         return queries
         
         
-    def add_nlp_predictions(self, nlp_results):
+    def add_nlp_predictions(self, nlp_results, average = False, threshold = 0):
         """
-        Add columns to the dataframe self.clean_ocr_output_df
-        with NLP predictions and scores contained in nlp_results
+        Update self.ocr_and_pred_df using NLP predictions.
+        New columns are added to self.clean_ocr_output_df.
+
+        Parameters
+        ----------
+        nlp_results : list
+            A list of lists giving recipes predicted by NLP (output of RecipeTransformer.predict())
+        average : boolean
+            Whether or not to average the NLP predictions for each menu recipe
+        threshold : float 
+            A float between 0 and 1. 
+            Only ingredients whose contribution to the PEF score is larger than threshold are kept.
+            If threshold = 0 (default), all ingredients are kept.
         """
         if self.clean_ocr_output_df is not None:
-            menu_df = self.clean_ocr_output_df.copy()
-            menu_df['recipe_title'] = [result['titles'] for result in nlp_results]
-            menu_df['recipe_tag'] = [result['tags'] for result in nlp_results]
-            menu_df['similarity_score'] = [result['similarity_scores'] for result in nlp_results]
-            menu_df['similarity_rank'] = [result['similarity_ranks'] for result in nlp_results]
-            menu_df = menu_df.explode(['recipe_title', 'recipe_tag', 'similarity_score', 'similarity_rank'])
+            # If we do not average the NLP predictions
+            if not average:
+                recipes_db = recipes.Jow()
 
-            self.ocr_and_pred_df = menu_df
+                # Don't like how it is written
+                # To be modified by changing how recipe scores are calculted in class Recipe
+                nlp_recipes_list = [[recipes_db.extract_recipe(title) for title in result['titles']] 
+                                    for result in nlp_results]
+                for recipe_list in nlp_recipes_list:
+                    for recipe in recipe_list:
+                        recipe.compute_score()
+
+                menu_df = self.clean_ocr_output_df.copy()
+                menu_df['recipe_title'] = [result['titles'] for result in nlp_results]
+                menu_df['recipe_tag'] = [result['tags'] for result in nlp_results]
+                menu_df['similarity_score'] = [result['similarity_scores'] for result in nlp_results]
+                menu_df['similarity_rank'] = [result['similarity_ranks'] for result in nlp_results]
+                menu_df['PEF_score'] = [[recipe.score_from_pefs for recipe in recipe_list] 
+                                        for recipe_list in nlp_recipes_list]
+                menu_df = menu_df.explode(['recipe_title', 'recipe_tag', 'similarity_score', \
+                                        'similarity_rank', 'PEF_score'])
+
+                self.ocr_and_pred_df = menu_df
+
+            # if we average the NLP predictions into one single new recipe
+            else:
+                average_recipes = []
+                for result in nlp_results:
+                    average_recipe = recipes.Recipe()
+                    try:
+                        average_recipe.average_from_nlp_predictions(result, db_name = 'jow', threshold = threshold)
+                    except:
+                        average_recipe.add_one_ingredient("Cannot be calculated", dict(quantity = 0, unit = 'no unit'))
+                    finally:
+                        average_recipes.append(average_recipe)
+
+                menu_df = self.clean_ocr_output_df.copy()
+                menu_df['ingredients_with_quantities'] = [[(ing.name, qty['quantity'], qty['unit']) 
+                                                          for ing, qty in zip(average_recipe.ingredients, average_recipe.quantities)]
+                                                          for average_recipe in average_recipes]
+                menu_df['PEF_score'] = [average_recipe.score_from_pefs for average_recipe in average_recipes]
+
+                self.ocr_and_pred_df = menu_df
     
         else:  # improve error handling
             raise ValueError("Update first clean_ocr_output_df")
