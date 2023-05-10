@@ -157,6 +157,7 @@ class Ingredient:
 
         # If there is no matching agribalyse ingredients
         if len(agribalyse_ingredients)==0 or agribalyse_ingredients[0]=='no match': 
+            warnings.warn("The ingredient '" + self.name + "' cannot be matched with any of the Agribalyse ingredients.")
             self.agribalyse_ingredients = 'no match'
             self.pef_score = np.nan
         # else update the attributes
@@ -250,18 +251,28 @@ class Recipe:
         if not all([quantity['unit']=='kg' for quantity in self.quantities]):
             warnings.warn("All quantities must be expressed in kg. The recipe score cannot be calculated")
             self.score_from_pefs = np.nan
+            self.score_contributions = [np.nan for i in range(len(self.ingredients))]
         # else 
         else:
             score_ingredient_contributions = []
             for ingredient, quantity in zip(self.ingredients, self.quantities):
                 ingredient.add_agribalyse_infos()
-                score_ingredient_contributions.append(ingredient.pef_score * quantity['quantity'])
+                # If the pef score of the ingredient cannot be calculated 
+                # (because it cannot be matched with one of Agribalyse ingredients)
+                # set the score to np.nan
+                if np.isnan(ingredient.pef_score):
+                    ingredient_pef_score = np.nan
+                # else compute the score weighted by the quantity
+                else:
+                    ingredient_pef_score = ingredient.pef_score * quantity['quantity']
+                score_ingredient_contributions.append(ingredient_pef_score)
 
-            self.score_from_pefs = sum(score_ingredient_contributions)
-            self.score_contributions = score_ingredient_contributions / self.score_from_pefs
-
-
-
+            if not np.isnan(score_ingredient_contributions).any():
+                self.score_from_pefs = sum(score_ingredient_contributions)
+                self.score_contributions = score_ingredient_contributions / self.score_from_pefs
+            else:
+                self.score_from_pefs = np.nan
+                self.score_contributions = [np.nan for i in range(len(self.ingredients))]
 
 
 
@@ -293,6 +304,9 @@ class Recipe:
             ing_names = [ing.name for ing in recipe.ingredients]
             assert len(ing_names)==len(set(ing_names))
 
+            # Convert quantities in kg
+            recipe.convert_quantities_in_kg()
+
             # Loop on the ingredients in each recipe
             for ingredient, quantity in zip(recipe.ingredients, recipe.quantities):
                 # Normalize the quantity with the recipe weight
@@ -307,7 +321,7 @@ class Recipe:
                 else:
                     # find the index of the ingredient in the ingredient list
                     idx = [ing.name for ing in self.ingredients].index(ingredient.name)
-                    # check units are the same
+                    # check units are the same 
                     assert self.quantities[idx]['unit']==weighted_quantity['unit']
                     # update the quantity of the ingredient
                     self.quantities[idx]['quantity'] += weighted_quantity['quantity']
@@ -315,24 +329,32 @@ class Recipe:
         # Remove ingredients whose contributions to the score is lower than threshold
         assert 0<=threshold<=1
         self.compute_score()
-        self.ingredients = list(np.array(self.ingredients)[np.array(self.score_contributions) > threshold])
-        self.quantities = list(np.array(self.quantities)[np.array(self.score_contributions) > threshold])
+        if not np.isnan(self.score_from_pefs):
+            self.ingredients = list(np.array(self.ingredients)[np.array(self.score_contributions) > threshold])
+            self.quantities = list(np.array(self.quantities)[np.array(self.score_contributions) > threshold])
+        
+
+
 
         
 
     
-    def average_from_nlp_predictions(self, nlp_results: list, db_name = 'jow'):
-        # WARNING : NOT YET TESTED
+    def average_from_nlp_predictions(self, nlp_results: list, db_name = 'jow', threshold = 0):
         """
         Build a new recipe by averaging the recipes in nlp_results
 
         Parameters
         ----------
         nlp_results : list
-            A list giving recipes predicted by NLP (with RecipeTransformer.predict())
+            A list giving recipes predicted by NLP 
+            (a sublist of the list returned by RecipeTransformer.predict())
         db_name : str
             -> TO BE MODIFIED, SHOULD BE INCLUDED IN NLP_RESULTS
             The name of recipe database used for NLP predictions
+        threshold : float 
+            A float between 0 and 1. 
+            Only ingredients whose contribution to the PEF score is larger than threshold are kept.
+            If threshold = 0 (default), all ingredients are kept.
         """
 
         assert db_name in ['jow']      #add more recipe databases
@@ -342,9 +364,9 @@ class Recipe:
 
         recipe_list = [recipes_db.extract_recipe(title) for title in nlp_results['titles']]
         recipe_scores = nlp_results['similarity_scores']
-        recipe_weigths = recipe_scores / max(recipe_scores)
+        recipe_weigths = list(np.array(recipe_scores) / max(recipe_scores))
 
-        self.average_from_recipes(recipe_list, weight_list = recipe_weigths)
+        self.average_from_recipes(recipe_list, weight_list = recipe_weigths, threshold = threshold)
 
 
 
