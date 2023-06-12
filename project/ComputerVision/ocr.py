@@ -9,12 +9,21 @@ import math
 
 load_dotenv()
 
+# path of the root directory
+DIR = os.path.dirname(
+        os.path.dirname(
+            os.path.dirname(
+                os.path.abspath(__file__)
+            )
+        )
+    )  
+
 
 class OCR:
 
     def __init__(self):
         self.paddleocr = PaddleOCR(show_log=False, use_angle_cls=True, enable_mkldnn=True, lang="latin")
-        self.model = YOLO(os.environ.get('BEST_MODEL'))
+        self.model = YOLO(os.path.join(DIR, os.environ.get('BEST_MODEL')))
         self.results = None
         self.cleaned_dict_of_boxes = None
 
