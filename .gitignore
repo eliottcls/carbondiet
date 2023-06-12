@@ -53,5 +53,7 @@ docs/_build/
 data/images
 data/other
 
+# Jupyter Notebook
+.ipynb_checkpoints
 # Keep only [Official] notebooks
 !notebooks/[Official]*
