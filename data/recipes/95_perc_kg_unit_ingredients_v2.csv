@@ -1,0 +1,737 @@
+Unnamed: 0,ingredient,name_unit,unit_kg,simple_ingredient
+0,bœuf (carpaccio),g,0.001,boeuf
+1,emmental,g,0.001,emmental
+2,sauce teriyaki,càs,0.015,sauce teriyaki
+3,riz,g,0.001,riz
+5,gnocchi,g,0.001,gnocchi
+6,epinard (frais),g,0.001,epinard
+7,gorgonzola,g,0.001,gorgonzola
+8,crème liquide,cl,0.01,crème liquide
+9,lentilles corail,g,0.001,lentilles corail
+10,tomate (chair),g,0.001,tomate
+11,lait de coco,cl,0.01,lait de coco
+12,ail,gou.,0.0833333333333333,ail
+13,lasagnes (cru),g,0.001,lasagnes
+14,courgette,g,0.001,courgette
+15,tomate (purée),g,0.001,tomate
+16,champignons de paris (frais),g,0.001,champignons de paris
+17,mozzarella (boule),unitaire,0.1875,mozzarella
+18,pâtes (spaghetti),g,0.001,pâtes
+19,pancetta,tran.,0.025,pancetta
+20,œuf,unitaire,0.06,oeuf
+21,parmesan (morceaux),g,0.001,parmesan
+22,pâte brisée,unitaire,0.225,pâte brisée
+23,courgette,unitaire,0.12,courgette
+24,carotte (frais),unitaire,0.1052631578947368,carotte
+27,moutarde à l'ancienne,càs,0.015,moutarde à l'ancienne
+28,pâte à pizza,unitaire,0.225,pâte à pizza
+29,fromage blanc,càs,0.015,fromage blanc
+30,crème fraîche épaisse,càs,0.015,crème fraîche épaisse
+31,lardons,g,0.001,lardons
+32,oignon jaune,unitaire,0.1,oignon jaune
+33,bœuf (haché),g,0.001,boeuf
+35,origan (séché),pinc.,0.0005,origan
+36,haricots rouges (cuits),g,0.001,haricots rouges
+37,,càc,0.005,nan
+40,,g,0.001,nan
+41,pâtes (coquillettes),g,0.001,pâtes
+42,jambon blanc,tran.,0.02,jambon blanc
+43,pomme de terre,g,0.001,pomme de terre
+44,knack (porc),unitaire,0.04,knack
+45,lait,cl,0.01,lait
+46,beurre,g,0.001,beurre
+47,reblochon,g,0.001,reblochon
+51,vin blanc,cl,0.01,vin blanc
+53,raclette,g,0.001,raclette
+56,jambon cru,tran.,0.025,jambon cru
+57,cornichon,g,0.001,cornichon
+58,rosette,tran.,0.025,rosette
+59,cabillaud (frais),unitaire,0.175,cabillaud
+61,farine de blé,g,0.001,farine de blé
+62,bière,cl,0.01,bière
+63,bicarbonate de soude,càc,0.005,bicarbonate de soude
+64,huile de tournesol,cl,0.01,huile de tournesol
+65,citron jaune,unitaire,0.1166666666666666,citron jaune
+66,sauce tartare,càs,0.015,sauce tartare
+67,galette bretonne,unitaire,0.0875,galette bretonne
+69,fromage râpé,pinc.,0.0005,fromage râpé
+72,échalote,unitaire,0.0222222222222222,échalote
+73,canard (confit),unitaire,0.175,canard
+74,noisette,g,0.001,noisette
+78,beurre,noisette,0.004,beurre
+79,poulet (escalope),unitaire,0.125,poulet
+80,miel (liquide),càs,0.015,miel
+82,haricot vert (frais),g,0.001,haricot vert
+85,ciboulette,bou.,0.04,ciboulette
+87,farine de blé,càs,0.015,farine de blé
+88,chapelure,càs,0.015,chapelure
+90,salade (mélange),g,0.001,salade
+92,chorizo (tranches),g,0.001,chorizo
+93,parmesan (râpé),g,0.001,parmesan
+97,saumon (frais),unitaire,0.125,saumon
+100,crevette (cuite),g,0.001,crevette
+102,piment d'espelette,pinc.,0.0005,piment d'espelette
+103,persil (frais),bou.,0.04,persil
+104,pâtes (tagliatelles),g,0.001,pâtes
+108,parmesan (râpé),càs,0.015,parmesan
+109,tomate cerise,g,0.001,tomate cerise
+110,thym (feuilles),pinc.,0.0005,thym
+118,graines de sésame,càc,0.005,graines de sésame
+124,basilic (frais),bou.,0.04,basilic
+125,tomate,g,0.001,tomate
+126,mozzarella di bufala,unitaire,0.1875,mozzarella di bufala
+127,nectarine,unitaire,0.1587301587301587,nectarine
+129,coriandre (frais),bou.,0.04,coriandre
+130,petits pois (surgelés),g,0.001,petits pois
+131,feta,g,0.001,feta
+134,tomate,unitaire,0.0862068965517241,tomate
+135,ricotta,càs,0.015,ricotta
+136,feta,unitaire,0.125,feta
+139,artichauts marinés,g,0.001,artichauts marinés
+141,burrata,g,0.001,burrata
+144,menthe (feuilles),bou.,0.04,menthe
+147,lait de coco,càs,0.015,lait de coco
+151,pignons de pin,càs,0.015,pignons de pin
+155,fraise,unitaire,0.0162954915806626,fraise
+157,burrata,unitaire,0.125,burrata
+161,figue,unitaire,0.0625,figue
+162,pain de campagne (tranché),tran.,0.035,pain de campagne
+163,chèvre frais,càs,0.015,chèvre frais
+165,miel (liquide),càc,0.005,miel
+166,noix,g,0.001,noix
+168,aubergine,unitaire,0.2857142857142857,aubergine
+174,olive noire,unitaire,0.0075,olive noire
+175,chèvre (crottin),unitaire,0.04,chèvre
+181,quinoa (cru),g,0.001,quinoa
+183,citron vert,unitaire,0.1166666666666666,citron vert
+184,yaourt grec,càs,0.015,yaourt grec
+186,pâtes (farfalles),g,0.001,pâtes
+188,amandes (effilées),g,0.001,amandes
+191,sauce pesto,càs,0.015,sauce pesto
+192,polenta,g,0.001,polenta
+198,ravioles au fromage,g,0.001,ravioles au fromage
+201,gnocchi (à poêler),g,0.001,gnocchi
+208,pâtes (linguine),g,0.001,pâtes
+209,avocat,unitaire,0.2012578616352201,avocat
+217,saumon (fumé),tran.,0.02,saumon
+218,mangue,unitaire,0.3333333333333333,mangue
+221,sauce soja salée,càs,0.015,sauce soja salée
+226,tortilla (blé),unitaire,0.075,tortilla
+227,concombre,unitaire,0.3529411764705882,concombre
+228,fromage frais,g,0.001,fromage frais
+231,semoule,g,0.001,semoule
+237,veau (escalope),unitaire,0.125,veau
+239,petits pois (frais),g,0.001,petits pois
+242,graines de tournesol,g,0.001,graines de tournesol
+243,vermicelles de riz,g,0.001,vermicelles de riz
+244,carotte (frais),g,0.001,carotte
+245,concombre,g,0.001,concombre
+250,cacahuète,g,0.001,cacahuète
+251,bœuf (rumsteck),unitaire,0.175,boeuf
+254,sauce pesto,càc,0.005,sauce pesto
+256,pâtes (orecchiette),g,0.001,pâtes
+275,chou-fleur (frais),unitaire,0.8888888888888888,chou-fleur
+280,cumin (moulu),pinc.,0.0005,cumin
+287,beurre de cacahuète,càs,0.015,beurre de cacahuète
+289,brocoli (frais),g,0.001,brocoli
+297,sauce tomate (basilic),g,0.001,sauce tomate
+300,couscous aux épices,g,0.001,couscous aux épices
+302,tomate séchée,g,0.001,tomate séchée
+303,oignon nouveau,unitaire,0.015,oignon nouveau
+308,moutarde à l'ancienne,càc,0.005,moutarde à l'ancienne
+317,ricotta,g,0.001,ricotta
+320,tomate cerise,unitaire,0.015,tomate cerise
+328,pain de mie,tran.,0.03,pain de mie
+330,comté,g,0.001,comté
+336,confiture de cerise,càc,0.005,confiture de cerise
+337,brie,g,0.001,brie
+340,mélange céréales,g,0.001,mélange céréales
+342,,bou.,0.04,nan
+347,bœuf (tournedos),unitaire,0.175,boeuf
+356,pomme de terre grenaille (surgelées),g,0.001,pomme de terre grenaille
+357,bœuf (steak),unitaire,0.175,boeuf
+359,roquefort,g,0.001,roquefort
+368,curry (poudre),càc,0.005,curry
+393,fromage râpé,g,0.001,fromage râpé
+397,chèvre frais,g,0.001,chèvre frais
+405,oignon rouge,unitaire,0.1,oignon rouge
+406,piment de cayenne,pinc.,0.0005,piment de cayenne
+413,tomate (à cuire),unitaire,0.125,tomate
+415,chair à saucisse,g,0.001,chair à saucisse
+420,lait,càs,0.015,lait
+421,potimarron,unitaire,0.625,potimarron
+427,pâtes (pipe rigate),g,0.001,pâtes
+431,,càs,0.015,nan
+433,tomate (à cuire),g,0.001,tomate
+435,vinaigre balsamique,càc,0.005,vinaigre balsamique
+436,sucre (en poudre),g,0.001,sucre
+437,pâtes (macaroni),g,0.001,pâtes
+441,chou-fleur (frais),g,0.001,chou-fleur
+446,haddock fumé,g,0.001,haddock fumé
+451,cheddar (râpé),g,0.001,cheddar
+462,sucre (en poudre),càs,0.015,sucre
+465,tomate (concentré),g,0.001,tomate
+471,udon,g,0.001,udon
+474,champignons bruns,g,0.001,champignons bruns
+477,pâte feuilletée,unitaire,0.225,pâte feuilletée
+480,epinards (surgelés),g,0.001,epinards
+486,sauce tikka masala,g,0.001,sauce tikka masala
+487,poireau,unitaire,0.125,poireau
+490,crème fraîche épaisse,g,0.001,crème fraîche épaisse
+495,grenade,unitaire,0.25,grenade
+501,lard (tranches),g,0.001,lard
+512,sauce curry korma,càc,0.005,sauce curry korma
+515,courge butternut,unitaire,0.875,courge butternut
+526,gaspacho,cl,0.01,gaspacho
+537,poulet (entier),unitaire,1.25,poulet
+539,bouquet garni,unitaire,0.015,bouquet garni
+543,saumon (cru),unitaire,0.175,saumon
+547,vinaigre de riz,càs,0.015,vinaigre de riz
+548,radis,g,0.001,radis
+554,poivron (assortiment),unitaire,0.125,poivron
+563,blé (à cuire),g,0.001,blé
+566,moutarde,càs,0.015,moutarde
+574,pois chiches (cuits),g,0.001,pois chiches
+576,pain de campagne (non tranché),g,0.001,pain de campagne
+580,maïs (conserve),g,0.001,maïs
+582,camembert,unitaire,0.1875,camembert
+586,lard (tranches),tran.,0.02,lard
+588,bouillon de légumes (cube),unitaire,0.015,bouillon de légumes
+610,champignons (mélange),g,0.001,champignons
+611,bouillon de volaille (cube),unitaire,0.015,bouillon de volaille
+613,patate douce,g,0.001,patate douce
+616,riz (mélange),g,0.001,riz
+621,moutarde douce,càc,0.005,moutarde douce
+622,estragon (séché),càc,0.005,estragon
+623,sirop d'érable,càs,0.015,sirop d'érable
+627,pâtes (conchiglioni),g,0.001,pâtes
+628,câpres,càs,0.015,câpres
+630,thon (conserve),g,0.001,thon
+632,pâtes fraîches,g,0.001,pâtes fraîches
+642,pain pita,unitaire,0.075,pain pita
+645,paprika,pinc.,0.0005,paprika
+646,pâtes (trofie),g,0.001,pâtes
+647,saucisse (chipolata),unitaire,0.04,saucisse
+651,fenouil,unitaire,0.2666666666666666,fenouil
+656,dinde (escalope),unitaire,0.125,dinde
+658,paprika,càc,0.005,paprika
+679,bœuf (bavette),unitaire,0.175,boeuf
+701,marrons (cuits),g,0.001,marrons
+711,orange,unitaire,0.1359223300970873,orange
+714,vinaigre de cidre,càs,0.015,vinaigre de cidre
+715,céleri-rave,unitaire,1.0256410256410258,céleri-rave
+718,crème liquide,càs,0.015,crème liquide
+729,confits d'oignons,càc,0.005,confits d'oignons
+735,poireau,g,0.001,poireau
+736,quenelle nature,unitaire,0.075,quenelle nature
+740,fourme d'ambert,unitaire,0.125,fourme d'ambert
+742,riz (arborio),g,0.001,riz
+749,sauce arrabbiata,g,0.001,sauce arrabbiata
+750,pâtes (pappardelle),g,0.001,pâtes
+751,morilles (séchées),g,0.001,morilles
+753,canard (magret),unitaire,0.225,canard
+765,english muffin,unitaire,0.075,english muffin
+767,salade (sucrine),unitaire,0.125,salade
+770,beurre demi-sel,g,0.001,beurre demi-sel
+771,chocolat à cuire,g,0.001,chocolat à cuire
+772,crème de marrons,g,0.001,crème de marrons
+773,pâtes (fusillotti),g,0.001,pâtes
+791,bacon,tran.,0.02,bacon
+792,cheddar (tranches),tran.,0.015,cheddar
+798,lentilles (à cuire),g,0.001,lentilles
+800,poivrons grillés,g,0.001,poivrons grillés
+802,pomme rouge,unitaire,0.1523809523809524,pomme rouge
+803,endives,unitaire,0.0727272727272727,endives
+806,vinaigre de cidre,càc,0.005,vinaigre de cidre
+807,ciboulette,g,0.001,ciboulette
+815,tabasco,càc,0.005,tabasco
+816,betterave (cuite),g,0.001,betterave
+827,huile d'olive,càs,0.015,huile d'olive
+834,romarin (séché),g,0.001,romarin
+846,tomate pelée,g,0.001,tomate pelée
+847,pâtes (alphabet),g,0.001,pâtes
+854,curcuma (poudre),càc,0.005,curcuma
+864,pâte de curry (rouge),càc,0.005,pâte de curry
+867,jambon cru (prosciutto),tran.,0.02,jambon cru
+874,kiri,unitaire,0.025,kiri
+881,yaourt nature,g,0.001,yaourt nature
+884,tahini,càc,0.005,tahini
+885,quatre-épices,càc,0.005,quatre-épices
+900,vinaigre de vin rouge,càs,0.015,vinaigre de vin rouge
+905,bœuf (steak haché),unitaire,0.125,boeuf
+908,pâte de curry (vert),càc,0.005,pâte de curry
+915,pain de campagne (tranché),g,0.001,pain de campagne
+934,vinaigre de vin rouge,càc,0.005,vinaigre de vin rouge
+937,nouilles instantanées (curry),unitaire,0.0875,nouilles instantanées
+944,nouilles instantanées (bœuf),unitaire,0.0875,nouilles instantanées
+952,fond de veau,càc,0.005,fond de veau
+963,sauce piment (sriracha),càc,0.005,sauce piment
+964,nouilles instantanées (poulet),unitaire,0.0875,nouilles instantanées
+976,nouilles de riz,g,0.001,nouilles de riz
+984,brocoli (frais),unitaire,0.4285714285714285,brocoli
+985,noix de saint-jacques,g,0.001,noix de saint-jacques
+986,pomme de terre,unitaire,0.0909090909090909,pomme de terre
+994,persil (frais),càc,0.005,persil
+1000,noix de cajou,g,0.001,noix de cajou
+1001,coriandre (frais),càc,0.005,coriandre
+1003,boulettes de viande (fraîches),g,0.001,boulettes de viande
+1004,pâtes (farfallines),g,0.001,pâtes
+1032,pâtes (tortellini ricotta-épinards),g,0.001,pâtes
+1042,tortilla (maïs),unitaire,0.075,tortilla
+1043,poivron rouge,unitaire,0.1052631578947368,poivron rouge
+1052,épices tandoori,càc,0.005,épices tandoori
+1054,chips de tortillas,g,0.001,chips de tortillas
+1064,sauce tomate (napolitaine),g,0.001,sauce tomate
+1070,poivron vert,unitaire,0.1052631578947368,poivron vert
+1075,mélange épices mexicaines,càc,0.005,mélange épices mexicaines
+1091,yaourt nature,unitaire,0.1375,yaourt nature
+1098,poulet (cuisse),unitaire,0.175,poulet
+1100,olives vertes,g,0.001,olives vertes
+1108,ail,unitaire,0.0833333333333333,ail
+1115,,cl,0.01,nan
+1117,chorizo (entier),g,0.001,chorizo
+1152,anchois,unitaire,0.015,anchois
+1156,sucre (en poudre),càc,0.005,sucre
+1165,vinaigre balsamique,càs,0.015,vinaigre balsamique
+1172,cumin (moulu),càc,0.005,cumin
+1174,oignon jaune,kg,1.0,oignon jaune
+1186,asperges vertes (fraîches),g,0.001,asperges vertes
+1189,mayonnaise,càc,0.005,mayonnaise
+1191,vinaigre de vin blanc,càs,0.015,vinaigre de vin blanc
+1192,estragon (frais),g,0.001,estragon
+1206,moutarde,càc,0.005,moutarde
+1211,chèvre (bûche),g,0.001,chèvre
+1276,tofu (fumé),g,0.001,tofu
+1287,tofu (nature),g,0.001,tofu
+1317,pistaches (grillées),g,0.001,pistaches
+1325,haricots blancs nature (cuits),g,0.001,haricots blancs nature
+1330,pomme de terre (petites),g,0.001,pomme de terre
+1364,vinaigre de vin blanc,càc,0.005,vinaigre de vin blanc
+1371,olives vertes,càs,0.015,olives vertes
+1373,poulet émincé (cuit),g,0.001,poulet émincé
+1374,bacon,g,0.001,bacon
+1378,salade (coeur de laitue),g,0.001,salade
+1379,mayonnaise,càs,0.015,mayonnaise
+1381,houmous,g,0.001,houmous
+1396,raifort (crème),càc,0.005,raifort
+1402,chou blanc (pièce),unitaire,1.090909090909091,chou blanc
+1404,sirop d'érable,càc,0.005,sirop d'érable
+1406,haricots (mélange/surgelé),g,0.001,haricots
+1408,pâte miso,càc,0.005,pâte miso
+1410,garam masala,càc,0.005,garam masala
+1472,pousses de soja,g,0.001,pousses de soja
+1475,lentilles (cuites),g,0.001,lentilles
+1490,beurre de cacahuète,càc,0.005,beurre de cacahuète
+1533,pain (baguette),g,0.001,pain
+1548,yaourt grec,g,0.001,yaourt grec
+1554,riz (à sushi),g,0.001,riz
+1560,olive noire,g,0.001,olive noire
+1568,nouilles précuites (ramen),g,0.001,nouilles précuites
+1573,harissa (pâte),càc,0.005,harissa
+1575,ras el hanout,càc,0.005,ras el hanout
+1589,origan (séché),càc,0.005,origan
+1593,fraise,g,0.001,fraise
+1600,tomates multicolores,g,0.001,tomates multicolores
+1601,mozzarella di bufala,g,0.001,mozzarella di bufala
+1631,melon,unitaire,0.9087731562390772,melon
+1641,feuille de riz,unitaire,0.015,feuille de riz
+1646,carottes râpées (nature),g,0.001,carottes râpées
+1650,œuf de caille,unitaire,0.0075,oeuf de caille
+1667,yaourt nature,càs,0.015,yaourt nature
+1673,chèvre (rocamadour),unitaire,0.04,chèvre
+1678,herbes de provence,pinc.,0.0005,herbes de provence
+1679,courgette ronde,unitaire,0.25,courgette ronde
+1725,mozzarella (mini),g,0.001,mozzarella
+1729,saucisse (fumée),g,0.001,saucisse
+1736,abricots (secs),g,0.001,abricots
+1738,pain d'épices,g,0.001,pain d'épices
+1749,romarin (séché),pinc.,0.0005,romarin
+1751,aubergine,g,0.001,aubergine
+1789,pain noir,tran.,0.035,pain noir
+1800,pain de mie (céréales),tran.,0.03,pain de mie
+1801,melon (vert),unitaire,0.625,melon
+1814,poudre d'amande,g,0.001,poudre d'amande
+1818,nectarine,g,0.001,nectarine
+1828,cerises,g,0.001,cerises
+1833,abricot (frais),g,0.001,abricot
+1838,fruits rouges (surgelés),g,0.001,fruits rouges
+1849,cumin (graines),pinc.,0.0005,cumin
+1859,brioche (tranchée),g,0.001,brioche
+1878,arôme fleur d'oranger,càs,0.015,arôme fleur d'oranger
+1882,poire,unitaire,0.131578947368421,poire
+1886,pomme (à cuire),unitaire,0.1523809523809524,pomme
+1888,pâte à tartiner,càs,0.015,pâte à tartiner
+1892,confiture de myrtilles,càs,0.015,confiture de myrtilles
+1902,sucre de canne,g,0.001,sucre de canne
+1907,banane,unitaire,0.1428571428571428,banane
+1920,compote rhubarbe,g,0.001,compote rhubarbe
+1923,compote abricot,g,0.001,compote abricot
+1925,pastèque (classique),g,0.001,pastèque
+1930,feta (marinée),g,0.001,feta
+1933,pâtes (fusilli),g,0.001,pâtes
+1949,gouda,g,0.001,gouda
+1975,salade (romaine),unitaire,0.125,salade
+1983,chili (épices),càc,0.005,chili
+2026,pecorino romano,càs,0.015,pecorino romano
+2027,poivre noir,pinc.,0.0005,poivre noir
+2032,vanille (extrait),càs,0.015,vanille
+2033,noix de pecan,g,0.001,noix de pecan
+2053,miel (liquide),g,0.001,miel
+2060,amandes (entières),g,0.001,amandes
+2074,pamplemousse,unitaire,0.3214285714285714,pamplemousse
+2091,kit fajitas,unitaire,0.3,kit fajitas
+2100,noix de coco (râpée),g,0.001,noix de coco
+2119,mirabelle,g,0.001,mirabelle
+2141,bleu,g,0.001,bleu
+2145,pain burger,unitaire,0.125,pain burger
+2171,crème fraîche épaisse,càc,0.005,crème fraîche épaisse
+2173,truite fumée,tran.,0.025,truite fumée
+2184,,pinc.,0.0005,nan
+2186,courge butternut,g,0.001,courge butternut
+2194,vanille (gousse),unitaire,0.0015,vanille
+2218,yellow mustard,càc,0.005,yellow mustard
+2219,ketchup,càc,0.005,ketchup
+2234,oignon jaune,g,0.001,oignon jaune
+2245,tomme,g,0.001,tomme
+2268,crème liquide 30%,cl,0.01,crème liquide 30%
+2285,poire (au sirop),g,0.001,poire
+2286,pâte sablée,unitaire,0.225,pâte sablée
+2302,graines de courge,g,0.001,graines de courge
+2303,graines de sésame,g,0.001,graines de sésame
+2305,avoine (flocons),g,0.001,avoine
+2306,sirop d'érable,g,0.001,sirop d'érable
+2307,huile d'olive,cl,0.01,huile d'olive
+2314,cannelle (en poudre),càc,0.005,cannelle
+2315,raisins secs,g,0.001,raisins secs
+2322,cacao (en poudre),càs,0.015,cacao
+2327,huile de coco,cl,0.01,huile de coco
+2328,noix de coco (chips),g,0.001,noix de coco
+2329,vanille (extrait),càc,0.005,vanille
+2339,ravioli (aux champignons),g,0.001,ravioli
+2343,cognac,càs,0.015,cognac
+2349,pignons de pin,g,0.001,pignons de pin
+2351,feuille de brick,unitaire,0.015,feuille de brick
+2362,graines de chia,g,0.001,graines de chia
+2371,palet breton,g,0.001,palet breton
+2374,boisson amande,cl,0.01,boisson amande
+2387,ananas au sirop (tranches),g,0.001,ananas au sirop
+2397,cacao (en poudre),càc,0.005,cacao
+2414,compote de pomme,g,0.001,compote de pomme
+2431,guimauve,unitaire,0.0075,guimauve
+2432,pâtes (rigatoni),g,0.001,pâtes
+2461,gingembre (moulu),càc,0.005,gingembre
+2475,blinis (grand),unitaire,0.0375,blinis
+2478,aneth (frais),bou.,0.04,aneth
+2503,muscade,pinc.,0.0005,muscade
+2506,saucisse (fumée),unitaire,0.125,saucisse
+2522,vin blanc,ml,0.001,vin blanc
+2533,blinis (petits),unitaire,0.015,blinis
+2537,foie gras,g,0.001,foie gras
+2538,confiture de figues,càs,0.015,confiture de figues
+2551,sauce soja sucrée,càs,0.015,sauce soja sucrée
+2560,speculoos,g,0.001,speculoos
+2563,lait concentré sucré,g,0.001,lait concentré sucré
+2568,huile de tournesol,ml,0.001,huile de tournesol
+2590,huile aromatisée à la truffe,càs,0.015,huile aromatisée à la truffe
+2596,fromage blanc,g,0.001,fromage blanc
+2598,speculoos,unitaire,0.0115,speculoos
+2614,marron glacé,unitaire,0.0125,marron glacé
+2615,meringue,g,0.001,meringue
+2642,ravioli (ricotta-épinards),g,0.001,ravioli
+2670,kiwi vert,unitaire,0.0997067448680351,kiwi vert
+2671,clémentine,unitaire,0.0446428571428571,clémentine
+2672,endives,g,0.001,endives
+2685,crozets,g,0.001,crozets
+2700,maquereau fumé,unitaire,0.125,maquereau fumé
+2758,chou de bruxelles,g,0.001,chou de bruxelles
+2774,jus d'orange,cl,0.01,jus d'orange
+2798,porc (filet mignon),unitaire,0.65,porc
+2801,poulet (aiguillette),unitaire,0.175,poulet
+2803,wasabi,càc,0.005,wasabi
+2806,chapelure,g,0.001,chapelure
+2815,ravioli (au gorgonzola),g,0.001,ravioli
+2823,beaufort,g,0.001,beaufort
+2825,ananas au sirop (tranches),tran.,0.025,ananas au sirop
+2846,vinaigre de xérès,càs,0.015,vinaigre de xérès
+2893,vodka,càs,0.015,vodka
+2897,pomme dauphine,g,0.001,pomme dauphine
+2906,haricot plat (frais),g,0.001,haricot plat
+2915,pomme noisette,g,0.001,pomme noisette
+2923,thon au citron,g,0.001,thon au citron
+2936,panais,g,0.001,panais
+2956,nem (porc),unitaire,0.05,nem
+2974,cannelle (en poudre),pinc.,0.0005,cannelle
+2981,pois cassés,g,0.001,pois cassés
+2988,aïoli,g,0.001,aïoli
+2993,artichaut (gros),unitaire,0.1290322580645161,artichaut
+3003,pistaches (émondées),g,0.001,pistaches
+3013,fécule de pommes de terre,g,0.001,fécule de pommes de terre
+3015,corn flakes,g,0.001,corn flakes
+3016,échalote,g,0.001,échalote
+3020,thym (branches),pinc.,0.0005,thym
+3084,poivron vert,g,0.001,poivron vert
+3115,asperges vertes (fraîches),bou.,0.04,asperges vertes
+3132,petit suisse,unitaire,0.08,petit suisse
+3133,mascarpone,g,0.001,mascarpone
+3134,artichaut (petit),g,0.001,artichaut
+3147,rhubarbe,g,0.001,rhubarbe
+3156,merguez,unitaire,0.075,merguez
+3161,fenouil,g,0.001,fenouil
+3167,piment (doux),pinc.,0.0005,piment
+3184,mozzarella (boule),g,0.001,mozzarella
+3201,sardine (boîte),g,0.001,sardine
+3231,poivron rouge,g,0.001,poivron rouge
+3264,anchois,g,0.001,anchois
+3341,orange,g,0.001,orange
+3345,figue séchée,g,0.001,figue séchée
+3372,abricot (frais),unitaire,0.048076923076923,abricot
+3425,biscuit cuiller,unitaire,0.0085,biscuit cuiller
+3426,café,càc,0.005,café
+3427,amaretto,càs,0.015,amaretto
+3445,sauce pesto,g,0.001,sauce pesto
+3457,tapenade (noire),g,0.001,tapenade
+3463,chorizo (tranches),tran.,0.02,chorizo
+3533,câpres,g,0.001,câpres
+3535,nouilles chinoises (aux œufs),g,0.001,nouilles chinoises
+3582,mélange épices mexicaines,pinc.,0.0005,mélange épices mexicaines
+3591,boisson végétale,cl,0.01,boisson végétale
+3597,yaourt végétal (coco),g,0.001,yaourt végétal
+3600,riz (complet),g,0.001,riz
+3605,yaourt végétal (coco),càs,0.015,yaourt végétal
+3613,émincé végétal,g,0.001,émincé végétal
+3640,demi-baguette (précuite),unitaire,0.25,demi-baguette
+3648,prune,g,0.001,prune
+3656,crevette (crue),g,0.001,crevette
+3666,"coquillettes, courgettes, tomates, thym",g,0.001,"coquillettes, courgettes, tomates, thym"
+3683,huile de sésame,càs,0.015,huile de sésame
+3684,sauce soja salée,càc,0.005,sauce soja salée
+3687,figue,g,0.001,figue
+3700,mimolette,g,0.001,mimolette
+3735,tomate (concentré),càc,0.005,tomate
+3737,curcuma (poudre),pinc.,0.0005,curcuma
+3742,sauce soja sucrée,càc,0.005,sauce soja sucrée
+3768,raisin (noir),g,0.001,raisin
+3818,huile de sésame,càc,0.005,huile de sésame
+3827,confiture de myrtilles,càc,0.005,confiture de myrtilles
+3839,pâte à tartiner,càc,0.005,pâte à tartiner
+3859,épices orientales,càc,0.005,épices orientales
+3861,sucre glace,g,0.001,sucre glace
+3880,mélange pour pâtes,càc,0.005,mélange pour pâtes
+3933,céleri-rave,g,0.001,céleri-rave
+3936,chips de légumes,g,0.001,chips de légumes
+4020,poudre de noisette,g,0.001,poudre de noisette
+4047,crêpes,unitaire,0.05,crêpes
+4051,grand marnier,cl,0.01,grand marnier
+4052,chou frisé (pièce),g,0.001,chou frisé
+4100,huile de colza,cl,0.01,huile de colza
+4101,cacao (en poudre),g,0.001,cacao
+4143,bœuf (rôti),g,0.001,boeuf
+4153,grand marnier,ml,0.001,grand marnier
+4185,mont d'or,g,0.001,mont d'or
+4200,bœuf (onglet),g,0.001,boeuf
+4204,vin rouge,cl,0.01,vin rouge
+4232,ratatouille,g,0.001,ratatouille
+4261,bœuf (paleron),g,0.001,boeuf
+4267,os à moelle,g,0.001,os à moelle
+4321,farine de blé,càc,0.005,farine de blé
+4322,veau (blanquette),g,0.001,veau
+4330,pommes de terre rissolées,g,0.001,pommes de terre rissolées
+4356,poisson pané,g,0.001,poisson pané
+4358,nuggets,g,0.001,nuggets
+4363,pomme de terre,kg,1.0,pomme de terre
+4379,haricot vert (frais),kg,1.0,haricot vert
+4403,nuggets végétal,g,0.001,nuggets végétal
+4404,haricot vert (frais),cup,0.237,haricot vert
+4405,pomme de terre,liv.,0.0909090909090909,pomme de terre
+4407,beurre,càs,0.015,beurre
+4419,épinards à la crème,g,0.001,épinards à la crème
+4432,cabillaud (frais),g,0.001,cabillaud
+4446,café caramel (dose),unitaire,0.006,café caramel
+4447,caramel (liquide),càc,0.005,caramel
+4466,selles-sur-cher,unitaire,0.175,selles-sur-cher
+4473,rillettes,g,0.001,rillettes
+4476,coppa,tran.,0.025,coppa
+4571,cidre,cl,0.01,cidre
+4585,canard (magret séché),g,0.001,canard
+4609,pâte à tartiner,g,0.001,pâte à tartiner
+4640,steak végétal,unitaire,0.11,steak végétal
+4643,ketchup,càs,0.015,ketchup
+4711,maïs (épi),unitaire,0.125,maïs
+4744,pain burger (brasserie),unitaire,0.16,pain burger
+4764,fromage frais,càs,0.015,fromage frais
+4793,gélatine,unitaire,0.0015,gélatine
+4804,vinaigre de vin rouge,cl,0.01,vinaigre de vin rouge
+4810,pâtes (penne),g,0.001,pâtes
+4835,asperge blanche (fraîche),g,0.001,asperge blanche
+4853,herbes de provence,càc,0.005,herbes de provence
+4879,vinaigre de cidre,cl,0.01,vinaigre de cidre
+4881,betterave (cuite),unitaire,0.175,betterave
+4884,lait,l,1.0,lait
+4888,maïzena,càs,0.015,maïzena
+4902,patate douce,unitaire,0.2,patate douce
+4942,bœuf (rumsteck),g,0.001,boeuf
+4946,maïzena,g,0.001,maïzena
+4949,sauce nuoc-mâm,càs,0.015,sauce nuoc-mâm
+4950,artichaut (petit),unitaire,0.125,artichaut
+4951,citron confit,g,0.001,citron confit
+4958,tequila,cl,0.01,tequila
+4959,cointreau,cl,0.01,cointreau
+4961,gin,cl,0.01,gin
+4962,tonic,cl,0.01,tonic
+4971,ricotta,càc,0.005,ricotta
+4972,mascarpone,càc,0.005,mascarpone
+4974,limonade,cl,0.01,limonade
+4977,vodka,cl,0.01,vodka
+4978,ginger beer,cl,0.01,ginger beer
+4989,eau gazeuse,cl,0.01,eau gazeuse
+4993,prosecco,cl,0.01,prosecco
+4994,liqueur st germain,cl,0.01,liqueur st germain
+4997,rhum (blanc),cl,0.01,rhum
+4999,jus d'ananas,cl,0.01,jus d'ananas
+5001,jus de cranberry,cl,0.01,jus de cranberry
+5004,cachaça,cl,0.01,cachaça
+5006,sucre de canne,càc,0.005,sucre de canne
+5008,apérol,cl,0.01,apérol
+5011,cola,cl,0.01,cola
+5020,pastis,cl,0.01,pastis
+5021,grenadine,cl,0.01,grenadine
+5023,jus de tomate,cl,0.01,jus de tomate
+5025,sel au céleri,pinc.,0.0005,sel au céleri
+5026,sirop d'orgeat,cl,0.01,sirop d'orgeat
+5046,levure chimique,càc,0.005,levure chimique
+5122,yaourt amande,càs,0.015,yaourt amande
+5145,curry (poudre),pinc.,0.0005,curry
+5162,coulis de fruits rouges,càs,0.015,coulis de fruits rouges
+5208,comté (râpé),g,0.001,comté
+5221,crème balsamique,càc,0.005,crème balsamique
+5228,tahini,g,0.001,tahini
+5233,cabécou,unitaire,0.035,cabécou
+5241,thym (feuilles),càc,0.005,thym
+5284,martini fiero,cl,0.01,martini fiero
+5312,lieu,g,0.001,lieu
+5331,sucre vanillé,càc,0.005,sucre vanillé
+5348,crème balsamique,càs,0.015,crème balsamique
+5353,ananas (entier),unitaire,1.0389610389610389,ananas
+5357,glace coco,g,0.001,glace coco
+5361,framboises,g,0.001,framboises
+5376,café,g,0.001,café
+5377,crème glacée vanille,g,0.001,crème glacée vanille
+5414,saumon (surgelé),unitaire,0.75,saumon
+5433,mozzarella (à cuire),g,0.001,mozzarella
+5434,faisselle,g,0.001,faisselle
+5435,pêche,unitaire,0.1587301587301587,pêche
+5450,côte de porc,unitaire,0.325,côte de porc
+5469,sardines (sans arêtes),g,0.001,sardines
+5492,sirop de pêche,càc,0.005,sirop de pêche
+5502,baies roses,g,0.001,baies roses
+5507,sorbet citron vert,g,0.001,sorbet citron vert
+5513,skyr,g,0.001,skyr
+5528,sauce pesto rouge,g,0.001,sauce pesto rouge
+5543,côte de boeuf,g,0.001,côte de boeuf
+5544,romarin (frais),bou.,0.04,romarin
+5607,tzatziki,g,0.001,tzatziki
+5621,baies roses,pinc.,0.0005,baies roses
+5624,sauce pesto rouge,càs,0.015,sauce pesto rouge
+5632,cranberry,g,0.001,cranberry
+5642,sucre de canne,càs,0.015,sucre de canne
+5644,lillet blanc,cl,0.01,lillet blanc
+5656,cracker,g,0.001,cracker
+5675,gingembre (frais),g,0.001,gingembre
+5762,ras el hanout,pinc.,0.0005,ras el hanout
+5809,graines de sésame,càs,0.015,graines de sésame
+5938,brioche (tranchée),tran.,0.035,brioche
+5964,brioche (non tranchée),g,0.001,brioche
+5993,poireau,kg,1.0,poireau
+6003,mozzarella (rapé),g,0.001,mozzarella
+6017,crème d'isigny,càs,0.015,crème d'isigny
+6084,cannelle (en poudre),càs,0.015,cannelle
+6094,mont d'or,unitaire,0.45,mont d'or
+6104,saucisse de toulouse,unitaire,0.125,saucisse de toulouse
+6175,romarin (séché),càc,0.005,romarin
+6188,truite,unitaire,0.25,truite
+6222,mascarpone,càs,0.015,mascarpone
+6234,cannelle (en bâtons),unitaire,0.0175,cannelle
+6268,blanc de poulet (tranches),tran.,0.025,blanc de poulet
+6284,anis étoilé,g,0.001,anis étoilé
+6288,vol-au-vent,unitaire,0.025,vol-au-vent
+6289,topinambour,g,0.001,topinambour
+6293,quenelle nature,g,0.001,quenelle nature
+6299,compote de pomme (pot),g,0.001,compote de pomme
+6308,cresson,bou.,0.04,cresson
+6363,filet de saumon,unitaire,0.175,filet de saumon
+6364,gros sel,g,0.001,gros sel
+6365,betterave crue,g,0.001,betterave crue
+6367,whisky,cl,0.01,whisky
+6383,huître,unitaire,0.0375,huître
+6420,œufs de poisson,g,0.001,oeufs de poisson
+6428,gésiers (volaille),g,0.001,gésiers
+6435,curry (poudre),càs,0.015,curry
+6438,aligot,g,0.001,aligot
+6462,parmesan (morceaux),càs,0.015,parmesan
+6480,tomate (concentré),càs,0.015,tomate
+6505,yaourt végétal,càs,0.015,yaourt végétal
+6506,confits d'oignons,càs,0.015,confits d'oignons
+6510,kiwi jaune,unitaire,0.0997067448680351,kiwi jaune
+6519,poulet (pané),unitaire,0.1,poulet
+6528,algues nori (feuille),unitaire,0.003,algues nori
+6530,vinaigre de riz,cl,0.01,vinaigre de riz
+6544,morbier,g,0.001,morbier
+6553,saumon (cru),g,0.001,saumon
+6575,chou blanc (pièce),g,0.001,chou blanc
+6586,farine de sarrasin,g,0.001,farine de sarrasin
+6621,tartine,tran.,0.03,tartine
+6631,haricot vert (surgelé),g,0.001,haricot vert
+6636,pain de mie (sans croûte),tran.,0.03,pain de mie
+6649,lait (ribot),cl,0.01,lait
+6657,fruit de la passion,unitaire,0.075,fruit de la passion
+6695,sucre (perle),g,0.001,sucre
+6705,sauce barbecue,càs,0.015,sauce barbecue
+6764,croissant,unitaire,0.06,croissant
+6771,poêlée de légumes (congelé),g,0.001,poêlée de légumes
+6775,fromage fouetté,g,0.001,fromage fouetté
+6779,filet de poisson (pané),unitaire,0.125,filet de poisson
+6782,sauce tartare,càc,0.005,sauce tartare
+6786,chou rouge,g,0.001,chou rouge
+6798,graines de chia,càs,0.015,graines de chia
+6803,noix de coco (râpée),càs,0.015,noix de coco
+6806,fromage ail & fines herbes,g,0.001,fromage ail & fines herbes
+6809,veau (paupiette),unitaire,0.175,veau
+6851,béchamel,cl,0.01,béchamel
+6864,poulet (pilon),unitaire,0.125,poulet
+6893,ail (semoule),càc,0.005,ail
+6898,gigot d'agneau,unitaire,1.5,gigot d'agneau
+6922,quinoa (cuit),g,0.001,quinoa
+6934,boulgour,g,0.001,boulgour
+7023,poêlée champêtre,g,0.001,poêlée champêtre
+7028,sirop de sucre de canne,cl,0.01,sirop de sucre de canne
+7043,toast (rond),unitaire,0.0275,toast
+7065,thon au basilic,g,0.001,thon au basilic
+7071,bœuf (aiguillette),g,0.001,boeuf
+7096,mini-toast (carré),unitaire,0.0075,mini-toast
+7104,céleri branche,g,0.001,céleri branche
+7180,levure chimique,g,0.001,levure chimique
+7191,sucre glace,càs,0.015,sucre glace
+7199,chantilly,g,0.001,chantilly
+7208,tortilla pockets (kit),unitaire,0.4,tortilla pockets
+7223,granola,g,0.001,granola
+7251,brochette de bœuf,unitaire,0.175,brochette de boeuf
+7274,boisson coco,cl,0.01,boisson coco
+7289,falafel,unitaire,0.04,falafel
+7295,houmous,càs,0.015,houmous
+7327,chocolat blanc,g,0.001,chocolat blanc
+7332,boisson végétale noisette,cl,0.01,boisson végétale noisette
+7351,pain de mie (complet),tran.,0.03,pain de mie
+7366,jus de pêche,cl,0.01,jus de pêche
+7376,bœuf (pavé),unitaire,0.225,boeuf
+7381,filet de saumon,g,0.001,filet de saumon
+7404,skyr,càs,0.015,skyr
+7437,haricot vert (conserve),g,0.001,haricot vert
+7438,béchamel,càs,0.015,béchamel
+7461,petits pois (conserve),g,0.001,petits pois
+7470,julienne de légumes (surgelés),g,0.001,julienne de légumes
+7471,riz (cuit),g,0.001,riz
+7489,sardine au piment,g,0.001,sardine au piment
+7498,taco kit,unitaire,0.4,taco kit
+7505,crousti' taco kit,unitaire,0.5,crousti' taco kit
+7513,sirop de pêche,cl,0.01,sirop de pêche
+7514,sirop de menthe,cl,0.01,sirop de menthe
