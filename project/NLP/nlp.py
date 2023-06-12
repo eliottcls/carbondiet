@@ -4,6 +4,15 @@ import pandas as pd
 import numpy as np
 import os
 
+# path of the root directory
+DIR = os.path.dirname(
+        os.path.dirname(
+            os.path.dirname(
+                os.path.abspath(__file__)
+            )
+        )
+    )  
+
 class RecipeTransformer:
     def __init__(self, 
                  model_name = "dangvantuan/sentence-camembert-large",
@@ -70,7 +79,7 @@ class RecipeTransformer:
             tag_embeddings = self.database_tag_embeddings
         )
 
-        filepath = "data/recipes/" + filename + ".npy"
+        filepath = os.path.join(DIR, "data/recipes", filename + ".npy")
         # !!! This should be modified !!!
         if not os.path.isfile(filepath):  
             np.save(filepath, database)
@@ -84,7 +93,7 @@ class RecipeTransformer:
 
         try:
             # Load the database if the file already exists
-            filepath = "data/recipes/" + filename + ".npy"
+            filepath = os.path.join(DIR, "data/recipes", filename + ".npy")
             database = np.load(filepath, allow_pickle = True).reshape(-1)[0]
             
             self.database_name = database['name']

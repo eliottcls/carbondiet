@@ -4,14 +4,25 @@ import os
 import re
 import warnings
 
+# path of the root directory
+DIR = os.path.dirname(
+        os.path.dirname(
+            os.path.dirname(
+                os.path.abspath(__file__)
+            )
+        )
+    )  
+
+
 class Jow:
     def __init__(self):
-        self.raw_df = pd.read_json('data/recipes/recipes_jow.json').transpose()
+        filepath = os.path.join(DIR, "data/recipes", "recipes_jow.json")
+        self.raw_df = pd.read_json(filepath).transpose()
         self.df = self.preprocessing()
 
 
     def save(self, filename = "preprocessed_jow_df"):
-        filepath = "data/recipes/" + filename + ".pkl"
+        filepath = os.path.join(DIR, "data/recipes", filename + ".pkl")
         # !!! This should be modified !!!
         if not os.path.isfile(filepath):  
             self.df.to_pickle(filepath)
@@ -56,7 +67,7 @@ class Jow:
 
         try:
             # Try to load the dataframe
-            filepath = "data/recipes/" + filename + ".pkl"
+            filepath = os.path.join(DIR, "data/recipes", filename + ".pkl")
             self.df = pd.read_pickle(filepath)
 
         except:
@@ -73,7 +84,7 @@ class Jow:
             self.df['name_with_ingredients'] = self.df.apply(lambda row: row['recipe_name'] \
                                                             + ", " + ', '.join(row['ingredients']), axis = 1)
             # Save the dataframe
-            self.save(filename)
+            self.save(filepath)
         
         return self.df
     
@@ -147,9 +158,9 @@ class Ingredient:
         using the table matching JOW and Agribalyse ingredients.
         !! To be generalized outside JOW !!
         """
-        filename = "data/recipes/Jow_Agribalyse_ingredients_scores.json" 
+        filepath = os.path.join(DIR, "data/recipes", "Jow_Agribalyse_ingredients_scores.json")
         # Not well written because we have to read the file for each ingredient -> to be corrected
-        df = pd.read_json(filename)
+        df = pd.read_json(filepath)
         # Keep only the relevant line
         df = df[df['JOW ingredients (simple, fr)']==self.name]
         # Get agribalyse ingredients
@@ -214,8 +225,8 @@ class Recipe:
         that cannot be found in the conversion table)
         """
         # Be careful that this file gives the conversion table for JOW ingredients only
-        filename = "data/recipes/95_perc_kg_unit_ingredients_v2.csv" 
-        qty_df = pd.read_csv(filename)
+        filepath = os.path.join(DIR, "data/recipes", "95_perc_kg_unit_ingredients_v2.csv")
+        qty_df = pd.read_csv(filepath)
 
         for idx, ingredient in enumerate(self.ingredients):
             # Do nothing if the quantity is already expressed in kg
