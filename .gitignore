@@ -57,3 +57,7 @@ data/other
 .ipynb_checkpoints
 # Keep only [Official] notebooks
 !notebooks/[Official]*
+
+# Others
+.vscode
+.DS_Store
