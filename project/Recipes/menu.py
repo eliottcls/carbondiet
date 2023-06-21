@@ -119,7 +119,7 @@ class Menu:
                         average_recipes.append(average_recipe)
 
                 menu_df = self.clean_ocr_output_df.copy()
-                menu_df['ingredients_with_quantities'] = [[(ing.name, qty['quantity'], qty['unit']) 
+                menu_df['ingredients_with_quantities'] = [[(ing.name, np.round(qty['quantity'], 6), qty['unit']) 
                                                           for ing, qty in zip(average_recipe.ingredients, average_recipe.quantities)]
                                                           for average_recipe in average_recipes]
                 menu_df['PEF_score'] = [average_recipe.score_from_pefs for average_recipe in average_recipes]
