@@ -21,6 +21,8 @@ class RecipeTransformer:
         # Initialization of the NLP model
         print("### LOADING THE MODEL ###")
         assert model_name in ["dangvantuan/sentence-camembert-large"]  # add more models
+        # The model is loaded from HuggingFace repository
+        # Could be better to save/load it locally but the model folder size is 1.25 Go
         self.model =  SentenceTransformer(model_name)
         print("The model is loaded.")
 
