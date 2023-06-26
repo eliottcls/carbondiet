@@ -12,7 +12,9 @@ from project.Recipes.menu import Menu
 
 # Add this decorator to avoid re-running the entire Python script from top to bottom
 # any time something is updated on the screen (due to a widget for instance)
-@st.cache_resource
+#@st.cache_resource
+# -> no more cached, otherwise ocr.display_boxes() and ocr.display_cleaned_boxes() return weird images (though OCR is correct)
+# Quick and dirty temporary solution
 def load_OCR_model():
     ocr = OCR()
     return ocr
