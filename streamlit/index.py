@@ -53,15 +53,22 @@ def compute_nlp_predictions(query_names, top_k, _nlp_model):
     nlp_results = _nlp_model.predict(query_names, top_k = top_k)
     return nlp_results
 
+# Delete all the items in Session state
+def init_session_state():
+    for key in st.session_state.keys():
+        del st.session_state[key]
 
 
 
+# *******************************************************************************
+# ************ MAIN FUNCTION ****************************************************
+# *******************************************************************************
 def app():
     st.set_page_config(page_title="CarbonDiet", page_icon="🥗", layout="wide", initial_sidebar_state="auto", menu_items=None)
     st.header("🥗 Welcome to CarbonDiet app")
     st.markdown(
         """
-    This demo scans a menu, extract its meals and finds the closest recipes in our (JOW) recipe database.  
+    This demo scans a menu, extract its dishes and finds the closest recipes in our (JOW) recipe database.  
     Averaging over a bunch of matching recipes is possible.  
     The estimated environmental footprint of each recipe is returned.
     """,
@@ -71,14 +78,16 @@ def app():
     # Instantiate OCR and NLP models
     with st.spinner(text='Loading OCR model'):
         ocr = load_OCR_model()
-    st.success("The OCR model is loaded.", icon="✅")
+    #st.success("The OCR model is loaded.", icon="✅")
     with st.spinner(text='Loading NLP model'):
         nlp_transformer = load_NLP_model()
-    st.success("The NLP model is loaded.", icon="✅")
+    #st.success("The NLP model is loaded.", icon="✅")
 
     # Choose the menu in the sidebar
     st.sidebar.write("Select a restaurant menu to analyse..")
-    uploaded_file = st.sidebar.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
+    uploaded_file = st.sidebar.file_uploader("Choose an image", 
+                                             type=["jpg", "jpeg", "png"],
+                                             on_change = init_session_state)
 
 
 
@@ -93,7 +102,7 @@ def app():
         # Extract text
         with st.spinner(text='Text extraction in progress'):
             menu = update_menu_with_extracted_text(menu, img, ocr)
-            st.success("Text extraction is done.", icon="✅")
+            #st.success("Text extraction is done.", icon="✅")
 
        
 
@@ -120,14 +129,17 @@ def app():
          
         with tab4:
             # Initialize values in Session State
-            if 'nlp_results' not in st.session_state:
-                st.session_state['nlp_results'] = None
+            for key in ['nlp_results', 'menu_df_no_avg']:
+                if key not in st.session_state:
+                    st.session_state[key] = None
 
             # Run NLP predictions without recipe averaging
+            # ... choose the input parameter
             st.write("For each menu entry, the NLP model finds the $k$ closest recipes in our recipe database.")
             col1, _ = st.columns([1, 5])
             top_k = col1.number_input('Choose the $k$ value', min_value = 1, max_value = 10)
 
+            # ... run the predictions
             NLP_clicked = st.button("Run the NLP predictions")   
             if NLP_clicked:
                 with st.spinner(text='NLP prediction in progress'):
@@ -136,41 +148,57 @@ def app():
                 #st.success("NLP predictions are done.", icon="✅")
 
                 with st.spinner(text='Adding NLP predictions to the dataframe'):
-                    menu_df = menu.add_nlp_predictions(nlp_results, average = False)
+                    menu_df_no_avg = menu.add_nlp_predictions(nlp_results, average = False)
 
-                # Remove the recipe title from the recipe tag
-                menu_df["recipe_tag"] = menu_df["recipe_tag"].apply(lambda s: ', '.join(s.split(', ')[1:]))
-                # Display the dataframe
-                st.dataframe(menu_df.drop("Title and Ingredients", axis = 1), 
-                             column_config = {"Title": "Category",
-                                              "Ingredients": "Dish",
-                                              "recipe_title": "Closest recipe name",
-                                              "recipe_tag": "Closest recipe ingredients",
-                                              "similarity_score": "Similarity score",
-                                              "similarity_rank": "Similarity rank",
-                                              "PEF_score": "PEF score"})
-
-                # Store nlp_results in the session state
+                # Store nlp_results and the menu dataframe in the session state
                 # to keep it even if the button is no more clicked
                 st.session_state['nlp_results'] = nlp_results 
+                st.session_state['menu_df_no_avg'] = menu_df_no_avg
+                
+            # ... show the menu dataframe
+            if st.session_state['menu_df_no_avg'] is not None:
+                menu_df_no_avg = st.session_state['menu_df_no_avg']
+                # Remove the recipe title from the recipe tag
+                menu_df_no_avg["recipe_tag"] = menu_df_no_avg["recipe_tag"].apply(lambda s: ', '.join(s.split(', ')[1:]))
+                # Display the dataframe
+                st.dataframe(menu_df_no_avg.drop("Title and Ingredients", axis = 1), 
+                                column_config = {"Title": "Category",
+                                                "Ingredients": "Dish",
+                                                "recipe_title": "Closest recipe name",
+                                                "recipe_tag": "Closest recipe ingredients",
+                                                "similarity_score": "Similarity score",
+                                                "similarity_rank": "Similarity rank",
+                                                "PEF_score": "PEF score"})
+                # Add a warning message
+                st.caption("Note : the PEF score of a recipe cannot be calculated if one of its \
+                           ingredients has not yet been matched with the Agribalyse database.")
 
-            # Average recipes
-            st.write("For each menu entry, let's average the $k$ closest recipes predicted by NLP \
-                    and discard ingredients that contribute less than a threshold value to the recipe PEF score.")
-            col1, _ = st.columns([1, 3])
-            threshold = col1.slider('Choose the threshold value (if 0, all ingredients are kept)', min_value = 0.0, max_value = 1.0, step = 0.01)
 
-            avgNLP_clicked = st.button("Average the NLP predictions")  
-            if avgNLP_clicked: 
-                with st.spinner(text='Averaging NLP predictions'):
-                    menu_df = menu.add_nlp_predictions(st.session_state['nlp_results'], average = True, threshold = threshold)
+                # Average recipes
+                # ... choose the input parameter
+                st.divider()
+                st.write("For each menu entry, the $k$ closest recipes predicted by NLP can be averaged\
+                        upon discarding ingredients that contribute less than a threshold value to the recipe PEF score.")
+                col1, _ = st.columns([1, 3])
+                threshold = col1.slider('Choose the threshold value (if 0, all ingredients are kept)', min_value = 0.0, max_value = 1.0, step = 0.01)
 
-                menu_df['ingredients_with_quantities'] = menu_df['ingredients_with_quantities'].astype('str')
-                st.dataframe(menu_df.drop("Title and Ingredients", axis = 1), 
-                         column_config = {"Title": "Category",
-                                          "Ingredients": "Dish",
-                                          "ingredients_with_quantities": "Average recipe ingredients",
-                                          "PEF_score": "PEF score"})
+                # ... compute the recipe average
+                avgNLP_clicked = st.button("Average the NLP predictions")  
+                if avgNLP_clicked: 
+                    with st.spinner(text='Averaging NLP predictions'):
+                        menu_df = menu.add_nlp_predictions(st.session_state['nlp_results'], average = True, threshold = threshold)
+
+                    # ... show the menu dataframe
+                    menu_df['ingredients_with_quantities'] = menu_df['ingredients_with_quantities'].astype('str')
+                    st.dataframe(menu_df.drop("Title and Ingredients", axis = 1), 
+                            column_config = {"Title": "Category",
+                                            "Ingredients": "Dish",
+                                            "ingredients_with_quantities": "Average recipe ingredients",
+                                            "PEF_score": "PEF score"})
+                    # ... Add a warning message
+                    st.caption("Note : the PEF score of an average recipe can be calculated only \
+                               if the PEF scores of all constituting recipes are known. \
+                               Only in that case, the threshold value is taken into account.")
 
 
 ############
