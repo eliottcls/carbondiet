@@ -16,6 +16,7 @@ The folder `notebooks/drafts` contains (quick & dirty) exploratory notebooks to 
 - `[Ugo] recipes_quantity.ipynb` : Notebook to express quantities of JOW ingredients in grams.
 - `[Genevieve]Add_one_col_quantity_df.ipynb` : Tiny notebook (following `[Ugo] recipes_quantity.ipynb`) adding a column for uniformized JOW ingredients i.e. without informations in parenthesis.
 - `[Aurelien]marmiton_scraping.ipynb` : A notebook to scrap Marmiton recipes
+- `[Genevieve]Zero_shot_clf_ingredient_jow_vs_Agb.ipynb`: zero-shot classification of JOW ingredients into categories/subcategories of Agribalyse ingredients. Quick tests. Not conclusive.
 
 
 ## Tests
