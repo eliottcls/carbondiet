@@ -173,7 +173,8 @@ def app():
                                                 "PEF_score": "PEF score"})
                 # Add a warning message
                 st.caption("Note : the PEF score of a recipe cannot be calculated if one of its \
-                           ingredients has not yet been matched with the Agribalyse database.")
+                           ingredients has not yet been matched with the Agribalyse database \
+                           and/or if one of the quantities is not yet expressed in g.")
 
 
                 # Average recipes
