@@ -168,13 +168,15 @@ class Ingredient:
 
         # If there is no matching agribalyse ingredients
         if len(agribalyse_ingredients)==0 or agribalyse_ingredients[0]=='no match': 
-            warnings.warn("The ingredient '" + self.name + "' cannot be matched with any of the Agribalyse ingredients.")
+            warnings.warn("The ingredient '" + self.name + "' cannot be matched with any of the Agribalyse ingredients. \
+                           By default, it is associated with the global ingredient category.")
             self.agribalyse_ingredients = 'no match'
-            self.pef_score = np.nan
         # else update the attributes
         else:
             self.agribalyse_ingredients = agribalyse_ingredients[0]
-            self.pef_score = df['Mean PEF'].values[0]
+
+        # Mean PEF Score
+        self.pef_score = df['Mean PEF'].values[0]
 
 
 
