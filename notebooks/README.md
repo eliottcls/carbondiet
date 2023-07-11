@@ -14,7 +14,7 @@ The folder `notebooks/drafts` contains (quick & dirty) exploratory notebooks to 
 - `[Genevieve]NLP_explore_jow+7t.ipynb` : Evaluation of the BERT NLP method on the 60 menu recipes from "MenuTo7tJOWRecipes_v1.json". The evaluation is done by matching with the JOW database only, the 7t database only, or the concatenation of both.
 - `[Genevieve]recipes_clustering.ipynb` : Test of clustering methods on JOW recipes.  
 - `[Ugo] recipes_quantity.ipynb` : Notebook to express quantities of JOW ingredients in grams.
-- `[Genevieve]Add_one_col_quantity_df.ipynb` : Tiny notebook (following `[Ugo] recipes_quantity.ipynb`) adding a column for uniformized JOW ingredients i.e. without informations in parenthesis.
+- `[Genevieve]Add_one_col_quantity_df.ipynb` : Tiny notebook (following `[Ugo] recipes_quantity.ipynb`) adding a column for uniformized JOW ingredients i.e. without informations in parenthesis + adding missing ingredient quantities.
 - `[Aurelien]marmiton_scraping.ipynb` : A notebook to scrap Marmiton recipes
 - `[Genevieve]Zero_shot_clf_ingredient_jow_vs_Agb.ipynb`: zero-shot classification of JOW ingredients into categories/subcategories of Agribalyse ingredients. Quick tests. Not conclusive.
 
