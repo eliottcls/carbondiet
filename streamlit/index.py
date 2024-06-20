@@ -151,6 +151,8 @@ def app():
 
                 with st.spinner(text='Adding NLP predictions to the dataframe'):
                     menu_df_no_avg = menu.add_nlp_predictions(nlp_results, average = False)
+                    # Remove the recipe title from the recipe tag
+                    menu_df_no_avg["recipe_tag"] = menu_df_no_avg["recipe_tag"].apply(lambda s: ', '.join(s.split(', ')[1:]))
 
                 # Store nlp_results and the menu dataframe in the session state
                 # to keep it even if the button is no more clicked
@@ -160,8 +162,6 @@ def app():
             # ... show the menu dataframe
             if st.session_state['menu_df_no_avg'] is not None:
                 menu_df_no_avg = st.session_state['menu_df_no_avg']
-                # Remove the recipe title from the recipe tag
-                menu_df_no_avg["recipe_tag"] = menu_df_no_avg["recipe_tag"].apply(lambda s: ', '.join(s.split(', ')[1:]))
                 # Display the dataframe
                 st.dataframe(menu_df_no_avg.drop("Title and Ingredients", axis = 1), 
                                 column_config = {"Title": "Category",
