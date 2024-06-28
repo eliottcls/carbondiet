@@ -108,11 +108,17 @@ def app():
 
        
 
-        tab1, tab2, tab3, tab4 = st.tabs(["Box detection on menu", 
-                                          "Cleaned box detection on menu", 
-                                          "Extracted text",
-                                          "NLP predictions"
-                                          ])
+        tab0, tab1, tab2, tab3, tab4 = st.tabs(["Original menu",
+                                                "Box detection on menu", 
+                                                "Cleaned box detection on menu", 
+                                                "Extracted text",
+                                                "NLP predictions"
+                                                ])
+        
+        # Display the original image
+        with tab0:
+            st.image(img, caption="Picture of the restaurant menu", use_column_width=True)
+
         # Display the original image
         with tab1:
             st.image(ocr.display_boxes(img), caption="Raw box detection", use_column_width=True)
@@ -163,11 +169,15 @@ def app():
             if st.session_state['menu_df_no_avg'] is not None:
                 menu_df_no_avg = st.session_state['menu_df_no_avg']
                 # Display the dataframe
-                st.dataframe(menu_df_no_avg.drop("Title and Ingredients", axis = 1), 
+                menu_df_no_avg["recipe_description"] = menu_df_no_avg["recipe_description"].astype('str')
+                st.dataframe(menu_df_no_avg.drop(["Title and Ingredients",
+                                                  "recipe_description"], 
+                                                  axis = 1), 
                                 column_config = {"Title": "Category",
                                                 "Ingredients": "Dish",
                                                 "recipe_title": "Closest recipe name",
                                                 "recipe_tag": "Closest recipe ingredients",
+                                                #"recipe_description": "Closest recipe description",
                                                 "similarity_score": "Similarity score",
                                                 "similarity_rank": "Similarity rank",
                                                 "PEF_score": "PEF score"})
