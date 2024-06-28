@@ -1,7 +1,13 @@
 # Carbondiet
 Carbondiet is a tool that scans restaurant menus and computes for each identified dish an environmental score.
 
-**The library is currently under development.**
+:speaker: **The library is currently under development.**
+
+## Installation 
+In a virtual environment, install the packages listed in `requirements.txt`.   
+Note that :
+- Carbondiet has been developed with Python>=3.9
+- Carbondiet uses `paddlepaddle` package that requires a machine supporting AVX. Workarounds with no-avx `paddlepaddle` versions may exist but have not been tested.
 
 ## Streamlit demo
 
@@ -10,7 +16,7 @@ To test the streamlit demo, go to the `streamlit` folder and run
 streamlit run index.py
 ```
 
-<img src="doc/streamlit_img1.png" alt="Homepage of the streamlit demo" width="400"/>
+<img src="doc/streamlit_img1.png" alt="Homepage of the streamlit demo" width="500"/>
 
 ## Main steps of the Carbondiet pipeline
 1. Carbondiet takes as input a picture of a restaurant menu.    
@@ -26,7 +32,7 @@ We illustrate hereafter the Carbondiet pipeline with an example of a menu pictur
 4. Each dish is then matched with the closest recipe in our recipe database. We use the [SentenceTransformers](https://sbert.net/) package (a.k.a. SBERT) from HuggingFace to compute embeddings of the menu dishes and of our recipes, and to calculate similarity scores between a dish and the various recipes so as to identify the closest one. In the streamlit demo, we use a recipe database made of roughly 1400 entries scrapped from [JOW](https://jow.fr/). Preliminary tests have also been made with [Marmiton](https://www.marmiton.org/) recipes and with the [Recipe1M+](http://pic2recipe.csail.mit.edu/) dataset preprocessed and shared by the team of this [repo](https://github.com/jsakv/batch7_tomorrow_datascience). <br />   
 ![Recipe matching](doc/pipeline_img4.png "Recipe matching") 
 
-5. Finally, the Product Environmental Footprint (PEF) of each identified recipe is calculated as follows: $\mathrm{PEF}_{recipe}=\sum_{i}w_i[\mathrm{kg}]\times (\mathrm{PEF}/\mathrm{kg})_i$ where $w_i$ if the quantity (in kg) of the ingredient $i$ in the recipe and $(\mathrm{PEF}/\mathrm{kg})_i$ its PEF score per kg. We use the [Agribalyse](https://agribalyse.ademe.fr/) database to estimate the PEF score of each ingredient and hence deduce the PEF score of the various dishes in the menu. <br />    
+5. Finally, the Product Environmental Footprint (PEF) of each identified recipe is calculated as follows: $`\mathrm{PEF}_{recipe}=\sum_{i}w_i[\mathrm{kg}]\times (\mathrm{PEF}/\mathrm{kg})_i`$ where $w_i$ if the quantity (in kg) of the ingredient $i$ in the recipe and $(\mathrm{PEF}/\mathrm{kg})_i$ its PEF score per kg. We use the [Agribalyse](https://agribalyse.ademe.fr/) database to estimate the PEF score of each ingredient and hence deduce the PEF score of the various dishes in the menu. <br />    
 ![PEF score calculation](doc/pipeline_img5.png "PEF score calculation")      
 Note that the PEF score is based on 16 environmental criteria (including e.g. the carbon footprint). The higher this score, the greater the impact on the environment. *Roughly speaking*, dishes with $\mathrm{PEF}\lesssim 0.1$ are excellent from an environmental point of view while dishes with $\mathrm{PEF}\gtrsim 0.5$ should be avoided.    
 
