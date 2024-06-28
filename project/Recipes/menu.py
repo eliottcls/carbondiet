@@ -98,11 +98,15 @@ class Menu:
                 menu_df = self.clean_ocr_output_df.copy()
                 menu_df['recipe_title'] = [result['titles'] for result in nlp_results]
                 menu_df['recipe_tag'] = [result['tags'] for result in nlp_results]
+                menu_df['recipe_description'] = [[[(ing.name, np.round(qty['quantity'], 6), qty['unit']) 
+                                                          for ing, qty in zip(recipe.ingredients, recipe.quantities)]
+                                                          for recipe in recipe_list]
+                                                          for recipe_list in nlp_recipes_list]
                 menu_df['similarity_score'] = [result['similarity_scores'] for result in nlp_results]
                 menu_df['similarity_rank'] = [result['similarity_ranks'] for result in nlp_results]
                 menu_df['PEF_score'] = [[recipe.score_from_pefs for recipe in recipe_list] 
                                         for recipe_list in nlp_recipes_list]
-                menu_df = menu_df.explode(['recipe_title', 'recipe_tag', 'similarity_score', \
+                menu_df = menu_df.explode(['recipe_title', 'recipe_tag', 'recipe_description', 'similarity_score', \
                                         'similarity_rank', 'PEF_score'])
 
                 self.ocr_and_pred_df = menu_df
